@@ -9,6 +9,12 @@
 import UIKit
 
 class DemoViewController: UIViewController {
-
-
+    
+    @IBOutlet weak var display: UILabel!
+    
+    @IBAction func appendDigitToStack(_ sender: UIButton) {
+        let digit = sender.currentTitle
+        print("digit is \(digit!)")
+    }
+    
 }
