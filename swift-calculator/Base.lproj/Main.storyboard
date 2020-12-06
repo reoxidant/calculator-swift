@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina3_5" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -20,17 +20,17 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="swift_calculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dkm-sY-OhH">
-                                <rect key="frame" x="16" y="10" width="288" height="454"/>
+                                <rect key="frame" x="16" y="392" width="382" height="454"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="gNB-mL-c84">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="114"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="114"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="120+100=12" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMe-jY-deD">
-                                                <rect key="frame" x="0.0" y="0.0" width="288" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="382" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -41,7 +41,7 @@
                                                 </variation>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ln-Lu-pLx">
-                                                <rect key="frame" x="0.0" y="30" width="288" height="84"/>
+                                                <rect key="frame" x="0.0" y="30" width="382" height="84"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="70"/>
                                                 <color key="textColor" red="0.056870453059999999" green="0.73821026089999997" blue="0.67843109369999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
@@ -52,13 +52,13 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="EZm-29-d0Q">
-                                        <rect key="frame" x="0.0" y="114" width="288" height="340"/>
+                                        <rect key="frame" x="0.0" y="114" width="382" height="340"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="rDm-nl-OwM">
-                                                <rect key="frame" x="0.0" y="0.0" width="288" height="60"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="382" height="60"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kKW-7n-dCM">
-                                                        <rect key="frame" x="0.0" y="0.0" width="63" height="60"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="86.5" height="60"/>
                                                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="64" id="0qc-oN-hbo">
@@ -85,7 +85,7 @@
                                                         </variation>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dVe-EI-SuN">
-                                                        <rect key="frame" x="75" y="0.0" width="63" height="60"/>
+                                                        <rect key="frame" x="98.5" y="0.0" width="86.5" height="60"/>
                                                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBold-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="+⁄−">
@@ -96,7 +96,7 @@
                                                         </variation>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0vV-0f-KtO">
-                                                        <rect key="frame" x="150" y="0.0" width="63" height="60"/>
+                                                        <rect key="frame" x="197" y="0.0" width="86.5" height="60"/>
                                                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBold-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="%">
@@ -107,7 +107,7 @@
                                                         </variation>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cfu-p4-StY">
-                                                        <rect key="frame" x="225" y="0.0" width="63" height="60"/>
+                                                        <rect key="frame" x="295.5" y="0.0" width="86.5" height="60"/>
                                                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBold-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="÷">
@@ -120,10 +120,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="8dl-eN-HXv">
-                                                <rect key="frame" x="0.0" y="70" width="288" height="60"/>
+                                                <rect key="frame" x="0.0" y="70" width="382" height="60"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZx-AF-vAk">
-                                                        <rect key="frame" x="0.0" y="0.0" width="63" height="60"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="86.5" height="60"/>
                                                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="7">
@@ -132,9 +132,12 @@
                                                         <variation key="heightClass=regular-widthClass=regular">
                                                             <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="50"/>
                                                         </variation>
+                                                        <connections>
+                                                            <action selector="digitsPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4T8-G5-dSo"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H4b-tY-JRD">
-                                                        <rect key="frame" x="75" y="0.0" width="63" height="60"/>
+                                                        <rect key="frame" x="98.5" y="0.0" width="86.5" height="60"/>
                                                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="8">
@@ -143,9 +146,12 @@
                                                         <variation key="heightClass=regular-widthClass=regular">
                                                             <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="50"/>
                                                         </variation>
+                                                        <connections>
+                                                            <action selector="digitsPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OVt-N9-qzy"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4PP-jN-TRf">
-                                                        <rect key="frame" x="150" y="0.0" width="63" height="60"/>
+                                                        <rect key="frame" x="197" y="0.0" width="86.5" height="60"/>
                                                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="9">
@@ -154,9 +160,12 @@
                                                         <variation key="heightClass=regular-widthClass=regular">
                                                             <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="50"/>
                                                         </variation>
+                                                        <connections>
+                                                            <action selector="digitsPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ja8-7l-lSk"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0hL-Av-jZD">
-                                                        <rect key="frame" x="225" y="0.0" width="63" height="60"/>
+                                                        <rect key="frame" x="295.5" y="0.0" width="86.5" height="60"/>
                                                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBold-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="×">
@@ -169,10 +178,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="CnF-IA-9oX">
-                                                <rect key="frame" x="0.0" y="140" width="288" height="60"/>
+                                                <rect key="frame" x="0.0" y="140" width="382" height="60"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lSx-Ba-FH8">
-                                                        <rect key="frame" x="0.0" y="0.0" width="63" height="60"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="86.5" height="60"/>
                                                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="4">
@@ -181,9 +190,12 @@
                                                         <variation key="heightClass=regular-widthClass=regular">
                                                             <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="50"/>
                                                         </variation>
+                                                        <connections>
+                                                            <action selector="digitsPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1Jx-Zw-msf"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fUS-jE-LCZ">
-                                                        <rect key="frame" x="75" y="0.0" width="63" height="60"/>
+                                                        <rect key="frame" x="98.5" y="0.0" width="86.5" height="60"/>
                                                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="5">
@@ -192,9 +204,12 @@
                                                         <variation key="heightClass=regular-widthClass=regular">
                                                             <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="50"/>
                                                         </variation>
+                                                        <connections>
+                                                            <action selector="digitsPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sZT-S5-OYJ"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OVO-4q-Acp">
-                                                        <rect key="frame" x="150" y="0.0" width="63" height="60"/>
+                                                        <rect key="frame" x="197" y="0.0" width="86.5" height="60"/>
                                                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="6">
@@ -203,9 +218,12 @@
                                                         <variation key="heightClass=regular-widthClass=regular">
                                                             <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="50"/>
                                                         </variation>
+                                                        <connections>
+                                                            <action selector="digitsPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bAI-9a-oiO"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1z-fw-zGd">
-                                                        <rect key="frame" x="225" y="0.0" width="63" height="60"/>
+                                                        <rect key="frame" x="295.5" y="0.0" width="86.5" height="60"/>
                                                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBold-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="-">
@@ -218,10 +236,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="u1H-jl-izF">
-                                                <rect key="frame" x="0.0" y="210" width="288" height="60"/>
+                                                <rect key="frame" x="0.0" y="210" width="382" height="60"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8H8-oS-vhb">
-                                                        <rect key="frame" x="0.0" y="0.0" width="63" height="60"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="86.5" height="60"/>
                                                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="1">
@@ -230,9 +248,12 @@
                                                         <variation key="heightClass=regular-widthClass=regular">
                                                             <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="50"/>
                                                         </variation>
+                                                        <connections>
+                                                            <action selector="digitsPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5jo-1N-ipF"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AAL-3t-XLm">
-                                                        <rect key="frame" x="75" y="0.0" width="63" height="60"/>
+                                                        <rect key="frame" x="98.5" y="0.0" width="86.5" height="60"/>
                                                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="2">
@@ -241,9 +262,12 @@
                                                         <variation key="heightClass=regular-widthClass=regular">
                                                             <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="50"/>
                                                         </variation>
+                                                        <connections>
+                                                            <action selector="digitsPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RGC-XD-Q49"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbl-Py-Ezu">
-                                                        <rect key="frame" x="150" y="0.0" width="63" height="60"/>
+                                                        <rect key="frame" x="197" y="0.0" width="86.5" height="60"/>
                                                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="3">
@@ -252,9 +276,12 @@
                                                         <variation key="heightClass=regular-widthClass=regular">
                                                             <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="50"/>
                                                         </variation>
+                                                        <connections>
+                                                            <action selector="digitsPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pj3-Ea-JnS"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V9d-CD-pak">
-                                                        <rect key="frame" x="225" y="0.0" width="63" height="60"/>
+                                                        <rect key="frame" x="295.5" y="0.0" width="86.5" height="60"/>
                                                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBold-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="+">
@@ -267,10 +294,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="88f-LA-rkp">
-                                                <rect key="frame" x="0.0" y="280" width="288" height="60"/>
+                                                <rect key="frame" x="0.0" y="280" width="382" height="60"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMn-lb-xm0">
-                                                        <rect key="frame" x="0.0" y="0.0" width="63" height="60"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="86.5" height="60"/>
                                                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="0">
@@ -279,9 +306,12 @@
                                                         <variation key="heightClass=regular-widthClass=regular">
                                                             <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="50"/>
                                                         </variation>
+                                                        <connections>
+                                                            <action selector="digitsPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IhW-xy-sx9"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Cd-cO-wU0">
-                                                        <rect key="frame" x="75" y="0.0" width="63" height="60"/>
+                                                        <rect key="frame" x="98.5" y="0.0" width="86.5" height="60"/>
                                                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBold-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title=",">
@@ -292,7 +322,7 @@
                                                         </variation>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zdQ-Wj-taL">
-                                                        <rect key="frame" x="150" y="0.0" width="138" height="60"/>
+                                                        <rect key="frame" x="197" y="0.0" width="185" height="60"/>
                                                         <color key="backgroundColor" red="0.056870453059999999" green="0.73821026089999997" blue="0.67843109369999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="30"/>
                                                         <state key="normal" title="=">
@@ -404,6 +434,9 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="display" destination="6Ln-Lu-pLx" id="HGi-1g-ZpX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
