@@ -10,11 +10,20 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
+    @IBOutlet weak var display: UILabel!
+    
+    var typeInTheMiddleOfNumber:Bool = false
+    
+    @IBAction func digitsPressed(_ sender: UIButton) {
+        let digit = sender.currentTitle!
+        
+        if(typeInTheMiddleOfNumber){
+            display.text?.append(digit)
+        }else{
+            display.text = digit
+            typeInTheMiddleOfNumber = true
+        }
     }
-
-
 }
 
