@@ -10,11 +10,24 @@ import UIKit
 
 class DemoViewController: UIViewController {
     
+    var userIsTheMiddleOfTypingANumber: Bool = false
+    
     @IBOutlet weak var display: UILabel!
     
+    @IBAction func enter() {
+        userIsTheMiddleOfTypingANumber = false
+    }
+    
+    var operandStack: Array <Double>()
+    
     @IBAction func appendDigitToStack(_ sender: UIButton) {
-        let digit = sender.currentTitle
-        print("digit is \(digit!)")
+        let digit = sender.currentTitle!
+        if userIsTheMiddleOfTypingANumber {
+            display.text = display.text! + digit
+        }else{
+            display.text = digit
+            userIsTheMiddleOfTypingANumber = true
+        }
     }
     
 }
