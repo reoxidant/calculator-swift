@@ -10,7 +10,7 @@
 		4452CCF92576BE7C0055B480 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4452CCF82576BE7C0055B480 /* AppDelegate.swift */; };
 		4452CCFB2576BE7C0055B480 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4452CCFA2576BE7C0055B480 /* SceneDelegate.swift */; };
 		4452CCFD2576BE7C0055B480 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4452CCFC2576BE7C0055B480 /* ViewController.swift */; };
-		4452CD002576BE7C0055B480 /* TempMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4452CCFE2576BE7C0055B480 /* TempMain.storyboard */; };
+		4452CD002576BE7C0055B480 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4452CCFE2576BE7C0055B480 /* Main.storyboard */; };
 		4452CD022576BE800055B480 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4452CD012576BE800055B480 /* Assets.xcassets */; };
 		4452CD052576BE800055B480 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4452CD032576BE800055B480 /* LaunchScreen.storyboard */; };
 		44CABDBC2576D10A007524D3 /* Calculator.png in Resources */ = {isa = PBXBuildFile; fileRef = 44CABDB72576D10A007524D3 /* Calculator.png */; };
@@ -24,7 +24,7 @@
 		4452CCF82576BE7C0055B480 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4452CCFA2576BE7C0055B480 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4452CCFC2576BE7C0055B480 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		4452CCFF2576BE7C0055B480 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/TempMain.storyboard; sourceTree = "<group>"; };
+		4452CCFF2576BE7C0055B480 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4452CD012576BE800055B480 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4452CD042576BE800055B480 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4452CD062576BE800055B480 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -67,7 +67,7 @@
 				4452CCF82576BE7C0055B480 /* AppDelegate.swift */,
 				4452CCFA2576BE7C0055B480 /* SceneDelegate.swift */,
 				4452CCFC2576BE7C0055B480 /* ViewController.swift */,
-				4452CCFE2576BE7C0055B480 /* TempMain.storyboard */,
+				4452CCFE2576BE7C0055B480 /* Main.storyboard */,
 				44CABDB82576D10A007524D3 /* Fonts */,
 				44CABDB62576D10A007524D3 /* Screenshots */,
 				4452CD012576BE800055B480 /* Assets.xcassets */,
@@ -157,7 +157,7 @@
 				4452CD052576BE800055B480 /* LaunchScreen.storyboard in Resources */,
 				4452CD022576BE800055B480 /* Assets.xcassets in Resources */,
 				44CABDBF2576D10A007524D3 /* quicksand-light.otf in Resources */,
-				4452CD002576BE7C0055B480 /* TempMain.storyboard in Resources */,
+				4452CD002576BE7C0055B480 /* Main.storyboard in Resources */,
 				44CABDBD2576D10A007524D3 /* quicksand-bold.otf in Resources */,
 				44CABDBC2576D10A007524D3 /* Calculator.png in Resources */,
 			);
@@ -179,12 +179,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		4452CCFE2576BE7C0055B480 /* TempMain.storyboard */ = {
+		4452CCFE2576BE7C0055B480 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				4452CCFF2576BE7C0055B480 /* Base */,
 			);
-			name = TempMain.storyboard;
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		4452CD032576BE800055B480 /* LaunchScreen.storyboard */ = {
