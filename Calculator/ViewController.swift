@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var display: UILabel!
     
     var typeInTheMiddleOfNumber:Bool = false
@@ -26,12 +26,23 @@ class ViewController: UIViewController {
     }
     
     @IBAction func digitsPressed(_ sender: UIButton) {
+        let hasDot = display.text!.contains(".") ? true : false
+        let pressedDot = sender.currentTitle!.contains(".") ? true : false
+        
         let digit = sender.currentTitle!
         
         if(typeInTheMiddleOfNumber){
-            display.text?.append(digit)
+            if !hasDot {
+                display.text = display.text! + digit
+            }else if !pressedDot{
+                display.text = display.text! + digit
+            }
         }else{
-            display.text = digit
+            if !pressedDot {
+                display.text = digit
+            } else if !hasDot {
+                display.text = display.text! + digit
+            }
             typeInTheMiddleOfNumber = true
         }
     }
@@ -39,7 +50,6 @@ class ViewController: UIViewController {
     @IBAction func enter() {
         typeInTheMiddleOfNumber = false
         operateStack.append(displayValue)
-        print("operateStack - \(operateStack)")
     }
     
     @IBAction func operate(_ sender: UIButton) {
@@ -48,18 +58,28 @@ class ViewController: UIViewController {
         if(typeInTheMiddleOfNumber){enter()}
         
         switch operation{
-            case "÷": performOperation {$1 / $0}
-            case "×": performOperation {$0 * $1}
-            case "-": performOperation {$1 - $0}
-            case "+": performOperation {$0 + $1}
-            default: break;
+        case "÷": performOperation {$1 / $0}
+        case "×": performOperation {$0 * $1}
+        case "-": performOperation {$1 - $0}
+        case "+": performOperation {$0 + $1}
+        case "sin": performOperation {sin($0 * Double.pi / 180)}
+        case "cos": performOperation {cos($0 * Double.pi / 180)}
+        case "√": performOperation {sqrt($0)}
+        case "𝜋": performOperation {$0 * Double.pi}
+        default: break;
         }
-        print(operation)
     }
     
     func performOperation(operation:(Double, Double) -> Double){
         if operateStack.count >= 2{
             displayValue = operation(operateStack.removeLast(), operateStack.removeLast())
+            enter()
+        }
+    }
+    
+    func performOperation(operation: (Double) -> Double){
+        if operateStack.count >= 1{
+            displayValue = operation(operateStack.removeLast())
             enter()
         }
     }
