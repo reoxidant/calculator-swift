@@ -25,37 +25,35 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var displayHistoryOperations: UILabel!
+    
     @IBAction func digitsPressed(_ sender: UIButton) {
-        let hasDot = display.text!.contains(".") ? true : false
-        let pressedDot = sender.currentTitle!.contains(".") ? true : false
-        
         let digit = sender.currentTitle!
+        let hasDot = digit.contains(".") && display.text!.contains(".")
         
         if(typeInTheMiddleOfNumber){
-            if !hasDot {
-                display.text = display.text! + digit
-            }else if !pressedDot{
-                display.text = display.text! + digit
-            }
+            display.text = display.text! + (hasDot ? "" : digit)
         }else{
-            if !pressedDot {
-                display.text = digit
-            } else if !hasDot {
-                display.text = display.text! + digit
-            }
+            display.text = (digit.contains(".") ? "0" + digit : digit)
             typeInTheMiddleOfNumber = true
         }
     }
     
     @IBAction func enter() {
+        if displayHistoryOperations.text!.isEmpty {
+             displayHistoryOperations.text! = display.text!
+        }
         typeInTheMiddleOfNumber = false
         operateStack.append(displayValue)
+        print(operateStack)
     }
     
     @IBAction func operate(_ sender: UIButton) {
         let operation = sender.currentTitle!
         
         if(typeInTheMiddleOfNumber){enter()}
+        
+        fillDisplayHistoryOperations(digit: display.text!, operation: operation)
         
         switch operation{
         case "÷": performOperation {$1 / $0}
@@ -68,6 +66,13 @@ class ViewController: UIViewController {
         case "𝜋": performOperation {$0 * Double.pi}
         default: break;
         }
+    }
+    
+    func fillDisplayHistoryOperations(digit: String, operation: String){
+        if displayHistoryOperations.text!.last == "="{
+            displayHistoryOperations.text!.removeLast()
+        }
+        displayHistoryOperations.text! += operation + digit + "="
     }
     
     func performOperation(operation:(Double, Double) -> Double){
