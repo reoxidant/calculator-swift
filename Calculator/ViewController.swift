@@ -26,23 +26,13 @@ class ViewController: UIViewController {
     }
     
     @IBAction func digitsPressed(_ sender: UIButton) {
-        let hasDot = display.text!.contains(".") ? true : false
-        let pressedDot = sender.currentTitle!.contains(".") ? true : false
-        
         let digit = sender.currentTitle!
+        let hasDot = digit.contains(".") && display.text!.contains(".")
         
         if(typeInTheMiddleOfNumber){
-            if !hasDot {
-                display.text = display.text! + digit
-            }else if !pressedDot{
-                display.text = display.text! + digit
-            }
+            display.text = display.text! + (hasDot ? "" : digit)
         }else{
-            if !pressedDot {
-                display.text = digit
-            } else if !hasDot {
-                display.text = display.text! + digit
-            }
+            display.text = (digit.contains(".") ? "0" + digit : digit)
             typeInTheMiddleOfNumber = true
         }
     }
