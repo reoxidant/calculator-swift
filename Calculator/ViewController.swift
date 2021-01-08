@@ -16,8 +16,6 @@ class ViewController: UIViewController {
     
     var operateStack = Array<Double>()
     
-    var resultOperation:String = ""
-    
     var displayValue: Double{
         get{
             return (display.text! as NSString).doubleValue
@@ -38,16 +36,16 @@ class ViewController: UIViewController {
         }else{
             display.text = (digit.contains(".") ? "0" + digit : digit)
             typeInTheMiddleOfNumber = true
-            displayHistoryOperations.text! += resultOperation
         }
     }
     
     @IBAction func enter() {
         if displayHistoryOperations.text!.isEmpty {
-            displayHistoryOperations.text! += display.text!
+             displayHistoryOperations.text! = display.text!
         }
         typeInTheMiddleOfNumber = false
         operateStack.append(displayValue)
+        print(operateStack)
     }
     
     @IBAction func operate(_ sender: UIButton) {
@@ -55,7 +53,7 @@ class ViewController: UIViewController {
         
         if(typeInTheMiddleOfNumber){enter()}
         
-        let digit = display.text!
+        fillDisplayHistoryOperations(digit: display.text!, operation: operation)
         
         switch operation{
         case "÷": performOperation {$1 / $0}
@@ -68,9 +66,12 @@ class ViewController: UIViewController {
         case "𝜋": performOperation {$0 * Double.pi}
         default: break;
         }
-        
-        resultOperation = display.text!
-        
+    }
+    
+    func fillDisplayHistoryOperations(digit: String, operation: String){
+        if displayHistoryOperations.text!.last == "="{
+            displayHistoryOperations.text!.removeLast()
+        }
         displayHistoryOperations.text! += operation + digit + "="
     }
     
