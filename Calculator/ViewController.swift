@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var displayHistoryOperations: UILabel!
+    @IBOutlet weak var displayHistory: UILabel!
     
     @IBAction func digitsPressed(_ sender: UIButton) {
         let digit = sender.currentTitle!
@@ -35,11 +35,14 @@ class ViewController: UIViewController {
             display.text = display.text! + (hasDot ? "" : digit)
         }else{
             display.text = (digit.contains(".") ? "0" + digit : digit)
-            typeInTheMiddleOfNumber = true
         }
+        typeInTheMiddleOfNumber = true
     }
     
     @IBAction func enter() {
+        if typeInTheMiddleOfNumber {
+            addHistory(textOperation: display.text!)
+        }
         typeInTheMiddleOfNumber = false
         operateStack.append(displayValue)
     }
@@ -49,10 +52,7 @@ class ViewController: UIViewController {
         
         if(typeInTheMiddleOfNumber){enter()}
         
-//        displayHistoryOperations.text! = (operateStack.count > 1) ? operateStack.map{"\($0)"}.joined(separator: operation) + "=" : ""
-        
-        displayHistoryOperations.text! += " \(operation) " + operateStack.map{"\($0)"}.joined(separator: " ")
-        
+        addHistory(textOperation:operation)
         
         switch operation{
         case "÷": performOperation {$1 / $0}
@@ -62,7 +62,8 @@ class ViewController: UIViewController {
         case "sin": performOperation {sin($0 * Double.pi / 180)}
         case "cos": performOperation {cos($0 * Double.pi / 180)}
         case "√": performOperation {sqrt($0)}
-        case "𝜋": performOperation {$0 * Double.pi}
+        case "𝜋": performOperation {Double.pi}
+
         default: break;
         }
     }
@@ -81,7 +82,13 @@ class ViewController: UIViewController {
         }
     }
     
-    func showHistoryOperation(){
-        
+    func performOperation(operation: () -> Double){
+        displayValue = operation()
+        enter()
+    }
+    
+    func addHistory(textOperation:String){
+//        displayHistory.text! += " \(textOperation) "
+        displayHistory.text! =  displayHistory.text! + " " + textOperation
     }
 }
