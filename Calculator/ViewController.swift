@@ -21,11 +21,14 @@ class ViewController: UIViewController {
             return (display.text! as NSString).doubleValue
         }
         set{
+            addToHistory(value: "=")
             display.text = "\(newValue)"
         }
     }
     
     @IBOutlet weak var displayHistory: UILabel!
+    
+    var hasOperation: Bool = false
     
     @IBAction func digitsPressed(_ sender: UIButton) {
         let digit = sender.currentTitle!
@@ -41,31 +44,45 @@ class ViewController: UIViewController {
     
     @IBAction func enter() {
         if typeInTheMiddleOfNumber {
-            addHistory(textOperation: display.text!)
+            addToHistory(value: "\(displayValue)")
+        }
+        if !hasOperation && typeInTheMiddleOfNumber {
+            addToHistory(value: "⏎")
         }
         typeInTheMiddleOfNumber = false
+        hasOperation = false
         operateStack.append(displayValue)
     }
     
     @IBAction func operate(_ sender: UIButton) {
-        let operation = sender.currentTitle!
-        
+        hasOperation = true
         if(typeInTheMiddleOfNumber){enter()}
-        
-        addHistory(textOperation:operation)
-        
-        switch operation{
-        case "÷": performOperation {$1 / $0}
-        case "×": performOperation {$0 * $1}
-        case "-": performOperation {$1 - $0}
-        case "+": performOperation {$0 + $1}
-        case "sin": performOperation {sin($0 * Double.pi / 180)}
-        case "cos": performOperation {cos($0 * Double.pi / 180)}
-        case "√": performOperation {sqrt($0)}
-        case "𝜋": performOperation {Double.pi}
-
-        default: break;
+        if let operation = sender.currentTitle {
+            addToHistory(value: operation)
+            switch operation{
+            case "÷": performOperation {$1 / $0}
+            case "×": performOperation {$0 * $1}
+            case "-": performOperation {$1 - $0}
+            case "+": performOperation {$0 + $1}
+            case "sin": performOperation {sin($0 * Double.pi / 180)}
+            case "cos": performOperation {cos($0 * Double.pi / 180)}
+            case "√": performOperation {sqrt($0)}
+            case "𝜋": performOperation {Double.pi}
+                
+            default: break;
+            }
         }
+    }
+    
+    func addToHistory (value:String)
+    {
+        if let i = displayHistory.text!.firstIndex(of: "=") {
+            displayHistory.text!.remove(at: i)
+            displayHistory.text!.removeLast()
+        }
+        
+        displayHistory.text! += "\(value) "
+        
     }
     
     func performOperation(operation:(Double, Double) -> Double){
@@ -87,8 +104,10 @@ class ViewController: UIViewController {
         enter()
     }
     
-    func addHistory(textOperation:String){
-//        displayHistory.text! += " \(textOperation) "
-        displayHistory.text! =  displayHistory.text! + " " + textOperation
+    @IBAction func resetState() {
+        display.text! = "0"
+        operateStack.removeAll()
+        typeInTheMiddleOfNumber = false
+        displayHistory.text! = ""
     }
 }
