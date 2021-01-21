@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -15,19 +15,19 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Calculator View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Calculator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CalculatorViewController" customModule="Calculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dkm-sY-OhH">
-                                <rect key="frame" x="16" y="302" width="382" height="544"/>
+                                <rect key="frame" x="16" y="302.33333333333331" width="382" height="543.66666666666674"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="gNB-mL-c84">
-                                        <rect key="frame" x="0.0" y="0.0" width="382" height="134"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="133.66666666666666"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMe-jY-deD">
                                                 <rect key="frame" x="0.0" y="0.0" width="382" height="50"/>
@@ -41,7 +41,7 @@
                                                 </variation>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ln-Lu-pLx">
-                                                <rect key="frame" x="0.0" y="50" width="382" height="84"/>
+                                                <rect key="frame" x="0.0" y="50.000000000000007" width="382" height="83.666666666666686"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="70"/>
                                                 <color key="textColor" red="0.056870453059999999" green="0.73821026089999997" blue="0.67843109369999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
@@ -52,13 +52,13 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="EZm-29-d0Q">
-                                        <rect key="frame" x="0.0" y="134" width="382" height="410"/>
+                                        <rect key="frame" x="0.0" y="133.66666666666669" width="382" height="410.00000000000006"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="rDm-nl-OwM">
                                                 <rect key="frame" x="0.0" y="0.0" width="382" height="60"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kKW-7n-dCM">
-                                                        <rect key="frame" x="0.0" y="0.0" width="86.5" height="60"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="86.666666666666671" height="60"/>
                                                         <color key="backgroundColor" red="0.29019607843137252" green="0.31372549019607843" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="64" id="0qc-oN-hbo">
@@ -88,7 +88,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dVe-EI-SuN">
-                                                        <rect key="frame" x="98.5" y="0.0" width="86.5" height="60"/>
+                                                        <rect key="frame" x="98.666666666666686" y="0.0" width="86.333333333333314" height="60"/>
                                                         <color key="backgroundColor" red="0.29019607843137252" green="0.31372549019607843" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBold-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="cos">
@@ -102,7 +102,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cfu-p4-StY">
-                                                        <rect key="frame" x="197" y="0.0" width="86.5" height="60"/>
+                                                        <rect key="frame" x="197" y="0.0" width="86.666666666666686" height="60"/>
                                                         <color key="backgroundColor" red="0.29019607843137252" green="0.31372549019607843" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBold-Regular" family="Quicksand" pointSize="30"/>
                                                         <state key="normal" title="𝜋">
@@ -117,7 +117,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0vV-0f-KtO">
-                                                        <rect key="frame" x="295.5" y="0.0" width="86.5" height="60"/>
+                                                        <rect key="frame" x="295.66666666666669" y="0.0" width="86.333333333333314" height="60"/>
                                                         <color key="backgroundColor" red="0.29019607843137252" green="0.31372549019607843" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBold-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="√">
@@ -136,7 +136,7 @@
                                                 <rect key="frame" x="0.0" y="70" width="382" height="60"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cSz-0b-FNp">
-                                                        <rect key="frame" x="0.0" y="0.0" width="86.5" height="60"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="86.666666666666671" height="60"/>
                                                         <color key="backgroundColor" red="0.2901960784" green="0.31372549020000001" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="64" id="8Er-qy-2UF">
@@ -166,7 +166,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FRH-Hu-gYL">
-                                                        <rect key="frame" x="98.5" y="0.0" width="86.5" height="60"/>
+                                                        <rect key="frame" x="98.666666666666686" y="0.0" width="86.333333333333314" height="60"/>
                                                         <color key="backgroundColor" red="0.2901960784" green="0.31372549020000001" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBold-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="+⁄−">
@@ -177,7 +177,7 @@
                                                         </variation>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wT5-aF-Ctv">
-                                                        <rect key="frame" x="197" y="0.0" width="86.5" height="60"/>
+                                                        <rect key="frame" x="197" y="0.0" width="86.666666666666686" height="60"/>
                                                         <color key="backgroundColor" red="0.2901960784" green="0.31372549020000001" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBold-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="%">
@@ -188,7 +188,7 @@
                                                         </variation>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5qC-20-WAf">
-                                                        <rect key="frame" x="295.5" y="0.0" width="86.5" height="60"/>
+                                                        <rect key="frame" x="295.66666666666669" y="0.0" width="86.333333333333314" height="60"/>
                                                         <color key="backgroundColor" red="0.2901960784" green="0.31372549020000001" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBold-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="÷">
@@ -207,7 +207,7 @@
                                                 <rect key="frame" x="0.0" y="140" width="382" height="60"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZx-AF-vAk">
-                                                        <rect key="frame" x="0.0" y="0.0" width="86.5" height="60"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="86.666666666666671" height="60"/>
                                                         <color key="backgroundColor" red="0.16078431372549018" green="0.1764705882352941" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="7">
@@ -221,7 +221,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H4b-tY-JRD">
-                                                        <rect key="frame" x="98.5" y="0.0" width="86.5" height="60"/>
+                                                        <rect key="frame" x="98.666666666666686" y="0.0" width="86.333333333333314" height="60"/>
                                                         <color key="backgroundColor" red="0.16078431372549018" green="0.1764705882352941" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="8">
@@ -235,7 +235,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4PP-jN-TRf">
-                                                        <rect key="frame" x="197" y="0.0" width="86.5" height="60"/>
+                                                        <rect key="frame" x="197" y="0.0" width="86.666666666666686" height="60"/>
                                                         <color key="backgroundColor" red="0.16078431372549018" green="0.1764705882352941" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="9">
@@ -249,7 +249,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0hL-Av-jZD">
-                                                        <rect key="frame" x="295.5" y="0.0" width="86.5" height="60"/>
+                                                        <rect key="frame" x="295.66666666666669" y="0.0" width="86.333333333333314" height="60"/>
                                                         <color key="backgroundColor" red="0.29019607843137252" green="0.31372549019607843" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBold-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="×">
@@ -268,7 +268,7 @@
                                                 <rect key="frame" x="0.0" y="210" width="382" height="60"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lSx-Ba-FH8">
-                                                        <rect key="frame" x="0.0" y="0.0" width="86.5" height="60"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="86.666666666666671" height="60"/>
                                                         <color key="backgroundColor" red="0.16078431372549018" green="0.1764705882352941" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="25"/>
                                                         <color key="tintColor" red="0.19958734512329102" green="0.22214618325233459" blue="0.29430776834487915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -283,7 +283,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fUS-jE-LCZ">
-                                                        <rect key="frame" x="98.5" y="0.0" width="86.5" height="60"/>
+                                                        <rect key="frame" x="98.666666666666686" y="0.0" width="86.333333333333314" height="60"/>
                                                         <color key="backgroundColor" red="0.16078431372549018" green="0.1764705882352941" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="5">
@@ -297,7 +297,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OVO-4q-Acp">
-                                                        <rect key="frame" x="197" y="0.0" width="86.5" height="60"/>
+                                                        <rect key="frame" x="197" y="0.0" width="86.666666666666686" height="60"/>
                                                         <color key="backgroundColor" red="0.16078431372549018" green="0.1764705882352941" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="6">
@@ -311,7 +311,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1z-fw-zGd">
-                                                        <rect key="frame" x="295.5" y="0.0" width="86.5" height="60"/>
+                                                        <rect key="frame" x="295.66666666666669" y="0.0" width="86.333333333333314" height="60"/>
                                                         <color key="backgroundColor" red="0.29019607843137252" green="0.31372549019607843" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBold-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="-">
@@ -330,7 +330,7 @@
                                                 <rect key="frame" x="0.0" y="280" width="382" height="60"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8H8-oS-vhb">
-                                                        <rect key="frame" x="0.0" y="0.0" width="86.5" height="60"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="86.666666666666671" height="60"/>
                                                         <color key="backgroundColor" red="0.16078431372549018" green="0.1764705882352941" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="1">
@@ -344,7 +344,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AAL-3t-XLm">
-                                                        <rect key="frame" x="98.5" y="0.0" width="86.5" height="60"/>
+                                                        <rect key="frame" x="98.666666666666686" y="0.0" width="86.333333333333314" height="60"/>
                                                         <color key="backgroundColor" red="0.16078431372549018" green="0.1764705882352941" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="2">
@@ -358,7 +358,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbl-Py-Ezu">
-                                                        <rect key="frame" x="197" y="0.0" width="86.5" height="60"/>
+                                                        <rect key="frame" x="197" y="0.0" width="86.666666666666686" height="60"/>
                                                         <color key="backgroundColor" red="0.16078431372549018" green="0.1764705882352941" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="3">
@@ -372,7 +372,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V9d-CD-pak">
-                                                        <rect key="frame" x="295.5" y="0.0" width="86.5" height="60"/>
+                                                        <rect key="frame" x="295.66666666666669" y="0.0" width="86.333333333333314" height="60"/>
                                                         <color key="backgroundColor" red="0.29019607843137252" green="0.31372549019607843" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBold-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="+">
@@ -391,7 +391,7 @@
                                                 <rect key="frame" x="0.0" y="350" width="382" height="60"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMn-lb-xm0">
-                                                        <rect key="frame" x="0.0" y="0.0" width="86.5" height="60"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="86.666666666666671" height="60"/>
                                                         <color key="backgroundColor" red="0.16078431372549018" green="0.1764705882352941" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="0">
@@ -405,7 +405,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Cd-cO-wU0">
-                                                        <rect key="frame" x="98.5" y="0.0" width="86.5" height="60"/>
+                                                        <rect key="frame" x="98.666666666666686" y="0.0" width="86.333333333333314" height="60"/>
                                                         <color key="backgroundColor" red="0.16078431372549018" green="0.1764705882352941" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBold-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title=".">

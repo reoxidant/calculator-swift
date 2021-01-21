@@ -8,13 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class CalculatorViewController: UIViewController {
     
     @IBOutlet weak var display: UILabel!
     
     var typeInTheMiddleOfNumber:Bool = false
-    
-    var operateStack = Array<Double>()
     
     var displayValue: Double{
         get{
@@ -29,6 +27,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var displayHistory: UILabel!
     
     var hasOperation: Bool = false
+    
+    let brain = CalculatorBrain()
     
     @IBAction func digitsPressed(_ sender: UIButton) {
         let digit = sender.currentTitle!
@@ -51,25 +51,24 @@ class ViewController: UIViewController {
         }
         typeInTheMiddleOfNumber = false
         hasOperation = false
-        operateStack.append(displayValue)
+       
+        if let result = brain.pushOperand(operand:displayValue){
+            displayValue = result
+        } else {
+            displayValue = 0
+        }
     }
     
     @IBAction func operate(_ sender: UIButton) {
         hasOperation = true
-        if(typeInTheMiddleOfNumber){enter()}
+        if typeInTheMiddleOfNumber {enter()}
         if let operation = sender.currentTitle {
             addToHistory(value: operation)
-            switch operation{
-            case "÷": performOperation {$1 / $0}
-            case "×": performOperation {$0 * $1}
-            case "-": performOperation {$1 - $0}
-            case "+": performOperation {$0 + $1}
-            case "sin": performOperation {sin($0 * Double.pi / 180)}
-            case "cos": performOperation {cos($0 * Double.pi / 180)}
-            case "√": performOperation {sqrt($0)}
-            case "𝜋": performOperation {Double.pi}
-                
-            default: break;
+
+            if let result = brain.performOperation(symbol:operation){
+                displayValue = result
+            } else {
+                displayValue = 0
             }
         }
     }
@@ -82,31 +81,11 @@ class ViewController: UIViewController {
         }
         
         displayHistory.text! += "\(value) "
+    }
         
-    }
-    
-    func performOperation(operation:(Double, Double) -> Double){
-        if operateStack.count >= 2{
-            displayValue = operation(operateStack.removeLast(), operateStack.removeLast())
-            enter()
-        }
-    }
-    
-    func performOperation(operation: (Double) -> Double){
-        if operateStack.count >= 1{
-            displayValue = operation(operateStack.removeLast())
-            enter()
-        }
-    }
-    
-    func performOperation(operation: () -> Double){
-        displayValue = operation()
-        enter()
-    }
-    
     @IBAction func resetState() {
         display.text! = "0"
-        operateStack.removeAll()
+        brain.removeStack()
         typeInTheMiddleOfNumber = false
         displayHistory.text! = ""
     }

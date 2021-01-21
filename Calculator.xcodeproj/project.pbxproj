@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4439112825B9EACF00E97488 /* CalculatorBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4439112725B9EACF00E97488 /* CalculatorBrain.swift */; };
 		4452CCF92576BE7C0055B480 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4452CCF82576BE7C0055B480 /* AppDelegate.swift */; };
 		4452CCFB2576BE7C0055B480 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4452CCFA2576BE7C0055B480 /* SceneDelegate.swift */; };
-		4452CCFD2576BE7C0055B480 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4452CCFC2576BE7C0055B480 /* ViewController.swift */; };
+		4452CCFD2576BE7C0055B480 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4452CCFC2576BE7C0055B480 /* CalculatorViewController.swift */; };
 		4452CD002576BE7C0055B480 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4452CCFE2576BE7C0055B480 /* Main.storyboard */; };
 		4452CD022576BE800055B480 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4452CD012576BE800055B480 /* Assets.xcassets */; };
 		4452CD052576BE800055B480 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4452CD032576BE800055B480 /* LaunchScreen.storyboard */; };
+		4489A88C25BA2D71002706DE /* OldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4489A88B25BA2D71002706DE /* OldViewController.swift */; };
 		44CABDBC2576D10A007524D3 /* Calculator.png in Resources */ = {isa = PBXBuildFile; fileRef = 44CABDB72576D10A007524D3 /* Calculator.png */; };
 		44CABDBD2576D10A007524D3 /* quicksand-bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 44CABDB92576D10A007524D3 /* quicksand-bold.otf */; };
 		44CABDBE2576D10A007524D3 /* quicksand-book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 44CABDBA2576D10A007524D3 /* quicksand-book.otf */; };
@@ -20,14 +22,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4439112725B9EACF00E97488 /* CalculatorBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorBrain.swift; sourceTree = "<group>"; };
 		4452CCF52576BE7C0055B480 /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4452CCF82576BE7C0055B480 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4452CCFA2576BE7C0055B480 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4452CCFC2576BE7C0055B480 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4452CCFC2576BE7C0055B480 /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		4452CCFF2576BE7C0055B480 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4452CD012576BE800055B480 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4452CD042576BE800055B480 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4452CD062576BE800055B480 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4489A88B25BA2D71002706DE /* OldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldViewController.swift; sourceTree = "<group>"; };
 		44CABDB72576D10A007524D3 /* Calculator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Calculator.png; sourceTree = "<group>"; };
 		44CABDB92576D10A007524D3 /* quicksand-bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "quicksand-bold.otf"; sourceTree = "<group>"; };
 		44CABDBA2576D10A007524D3 /* quicksand-book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "quicksand-book.otf"; sourceTree = "<group>"; };
@@ -64,17 +68,27 @@
 		4452CCF72576BE7C0055B480 /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				4452CD062576BE800055B480 /* Info.plist */,
 				4452CCF82576BE7C0055B480 /* AppDelegate.swift */,
 				4452CCFA2576BE7C0055B480 /* SceneDelegate.swift */,
-				4452CCFC2576BE7C0055B480 /* ViewController.swift */,
-				4452CCFE2576BE7C0055B480 /* Main.storyboard */,
-				44CABDB82576D10A007524D3 /* Fonts */,
-				44CABDB62576D10A007524D3 /* Screenshots */,
+				4439112725B9EACF00E97488 /* CalculatorBrain.swift */,
+				4489A88D25BA2D9D002706DE /* View */,
 				4452CD012576BE800055B480 /* Assets.xcassets */,
+				44CABDB82576D10A007524D3 /* Fonts */,
 				4452CD032576BE800055B480 /* LaunchScreen.storyboard */,
-				4452CD062576BE800055B480 /* Info.plist */,
+				4452CCFE2576BE7C0055B480 /* Main.storyboard */,
+				44CABDB62576D10A007524D3 /* Screenshots */,
 			);
 			path = Calculator;
+			sourceTree = "<group>";
+		};
+		4489A88D25BA2D9D002706DE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4452CCFC2576BE7C0055B480 /* CalculatorViewController.swift */,
+				4489A88B25BA2D71002706DE /* OldViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		44CABDB62576D10A007524D3 /* Screenshots */ = {
@@ -170,8 +184,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4452CCFD2576BE7C0055B480 /* ViewController.swift in Sources */,
+				4452CCFD2576BE7C0055B480 /* CalculatorViewController.swift in Sources */,
 				4452CCF92576BE7C0055B480 /* AppDelegate.swift in Sources */,
+				4439112825B9EACF00E97488 /* CalculatorBrain.swift in Sources */,
+				4489A88C25BA2D71002706DE /* OldViewController.swift in Sources */,
 				4452CCFB2576BE7C0055B480 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
