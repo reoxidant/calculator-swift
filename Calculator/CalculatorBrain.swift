@@ -31,12 +31,13 @@ class CalculatorBrain{
         func learnOps(op:Op){
             knowsOps[op.description] = op
         }
-        
         learnOps(op:Op.BinaryOperation("×", *))
         learnOps(op:Op.BinaryOperation("÷"){$1 / $0})
         learnOps(op:Op.BinaryOperation("+", +))
         learnOps(op:Op.BinaryOperation("-"){$1 - $0})
         learnOps(op:Op.UnaryOperation("√", sqrt))
+        learnOps(op:Op.UnaryOperation("sin", sin))
+        learnOps(op:Op.UnaryOperation("cos", cos))
     }
     
     private var opStack = [Op]()
@@ -45,12 +46,14 @@ class CalculatorBrain{
     private func evaluate(ops:[Op]) -> (result:Double?, remainingOps:[Op]){
         
         if !ops.isEmpty{
-            
             var remainingOps = ops
             let op = remainingOps.removeLast();
             
             switch op {
             case .Operand(let operand):
+                
+                //MARK: do if u will click on enter or if u click on operation - first take a operate number to do the enter function and later add into opStack. In case operation take it first for the switch statement to recurse calculate value
+                
                 return (operand, remainingOps)
             case .UnaryOperation(_, let operation):
                 let operandEvaluation = evaluate(ops:remainingOps)
@@ -73,6 +76,7 @@ class CalculatorBrain{
     
     func pushOperand(operand:Double) -> Double?{
         opStack.append(Op.Operand(operand))
+        print("opStack \(operand)")
         return evaluate()
     }
     
@@ -84,10 +88,10 @@ class CalculatorBrain{
     }
     
     func evaluate() -> Double?{
-        let(result, remainingOps) = evaluate(ops:opStack)
-        if let result = result {
-            print("result = \(result), remainingOps = \(remainingOps)")
-        }
+        let(result, _) = evaluate(ops:opStack)
+        //if let result = result {
+        //  print("result = \(result), remainingOps = \(remainingOps)")
+        //}
         return result
     }
     

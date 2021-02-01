@@ -49,6 +49,10 @@ class CalculatorViewController: UIViewController {
         if !hasOperation && typeInTheMiddleOfNumber {
             addToHistory(value: "⏎")
         }
+        if !hasOperation && !typeInTheMiddleOfNumber{
+            addToHistory(value: "\(displayValue)")
+            addToHistory(value: "⏎")
+        }
         typeInTheMiddleOfNumber = false
         hasOperation = false
        
