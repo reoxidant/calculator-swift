@@ -49,10 +49,7 @@ class CalculatorViewController: UIViewController {
         if !hasOperation && typeInTheMiddleOfNumber {
             addToHistory(value: "⏎")
         }
-        if !hasOperation && !typeInTheMiddleOfNumber{
-            addToHistory(value: "\(displayValue)")
-            addToHistory(value: "⏎")
-        }
+        
         typeInTheMiddleOfNumber = false
         hasOperation = false
        
@@ -68,7 +65,9 @@ class CalculatorViewController: UIViewController {
         if typeInTheMiddleOfNumber {enter()}
         if let operation = sender.currentTitle {
             addToHistory(value: operation)
-
+            if operation == "𝜋"{
+                enter()
+            }
             if let result = brain.performOperation(symbol:operation){
                 displayValue = result
             } else {

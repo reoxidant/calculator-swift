@@ -38,6 +38,7 @@ class CalculatorBrain{
         learnOps(op:Op.UnaryOperation("√", sqrt))
         learnOps(op:Op.UnaryOperation("sin", sin))
         learnOps(op:Op.UnaryOperation("cos", cos))
+        learnOps(op:Op.UnaryOperation("𝜋"){_ in .pi})
     }
     
     private var opStack = [Op]()
@@ -76,7 +77,6 @@ class CalculatorBrain{
     
     func pushOperand(operand:Double) -> Double?{
         opStack.append(Op.Operand(operand))
-        print("opStack \(operand)")
         return evaluate()
     }
     
