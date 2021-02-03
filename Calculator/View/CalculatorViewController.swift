@@ -19,7 +19,6 @@ class CalculatorViewController: UIViewController {
             return (display.text! as NSString).doubleValue
         }
         set{
-            addToHistory(value: "=")
             display.text = "\(newValue)"
         }
     }
@@ -68,6 +67,7 @@ class CalculatorViewController: UIViewController {
             if (operation == "𝜋" || operation == "cos"){
                 enter()
             }
+            addToHistory(value: "=")
             if let result = brain.performOperation(symbol:operation){
                 displayValue = result
             } else {
