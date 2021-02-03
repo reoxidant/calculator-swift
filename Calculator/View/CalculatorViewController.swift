@@ -65,7 +65,7 @@ class CalculatorViewController: UIViewController {
         if typeInTheMiddleOfNumber {enter()}
         if let operation = sender.currentTitle {
             addToHistory(value: operation)
-            if operation == "𝜋"{
+            if (operation == "𝜋" || operation == "cos"){
                 enter()
             }
             if let result = brain.performOperation(symbol:operation){
