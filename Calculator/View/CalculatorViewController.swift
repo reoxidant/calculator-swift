@@ -23,6 +23,30 @@ class CalculatorViewController: UIViewController {
         }
     }
     
+    @IBAction func pressedBackspace(_ sender: UIButton) {
+        if display.text!.count > 1{
+            display.text = String(display.text!.dropLast())
+            typeInTheMiddleOfNumber = true
+        } else {
+            display.text = "\(0.0)"
+            typeInTheMiddleOfNumber = false
+        }
+    }
+    
+    @IBAction func signPlusMinusPressed() {
+        if typeInTheMiddleOfNumber {
+            if displayValue > 0{
+                displayValue = -displayValue
+            } else {
+                displayValue = abs(displayValue)
+            }
+        } else {
+            if let result = brain.performOperation(symbol:"+/-"){
+                displayValue = result
+            }
+        }
+    }
+    
     @IBOutlet weak var displayHistory: UILabel!
     
     var hasOperation: Bool = false
