@@ -20,17 +20,13 @@ Calculator IOS Application. Build SKD 13.6
 
 ### Portrait and Landspace Orientation:
 
-<img src="https://raw.githubusercontent.com/reoxidant/swift-calculator/main/Calculator/Screenshots/Calculator-portrait.png" width=400/> 
+<img src="https://raw.githubusercontent.com/reoxidant/swift-calculator/main/Calculator/Screenshots/Calculator-portrait.png" width=400/> <img src="https://raw.githubusercontent.com/reoxidant/swift-calculator/main/Calculator/Screenshots/Calculator-landscape.png" width=800/>
 
-<img src="https://raw.githubusercontent.com/reoxidant/swift-calculator/main/Calculator/Screenshots/Calculator-landscape.png" width=400/>
-
-## Requirement
+## Requirement:
 
 - IOS 13.6+
 - Xcode 11.0
 
-## 
-
-## Contacts
+## Contacts:
 
 Vitaliy Shapovalov kupper133@gmail.com
