@@ -39,6 +39,7 @@ class CalculatorBrain{
         learnOps(op:Op.UnaryOperation("sin", sin))
         learnOps(op:Op.UnaryOperation("cos", cos))
         learnOps(op:Op.UnaryOperation("𝜋"){_ in .pi})
+        learnOps(op:Op.UnaryOperation("+/-", { operand in (operand > 0) ? operand * -1 : abs(operand) }))
     }
     
     private var opStack = [Op]()
