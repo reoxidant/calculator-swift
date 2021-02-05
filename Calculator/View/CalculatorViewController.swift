@@ -14,12 +14,17 @@ class CalculatorViewController: UIViewController {
     
     var typeInTheMiddleOfNumber:Bool = false
     
-    var displayValue: Double{
+    var displayValue: Double?{
         get{
-            return (display.text! as NSString).doubleValue
+            let formatter = NumberFormatter()
+            if let convertedValue = formatter.number(from: display.text!) as? Double{
+                return convertedValue
+            } else {
+                return 0
+            }
         }
         set{
-            display.text = "\(newValue)"
+            display.text = "\(newValue ?? 0)"
         }
     }
     
@@ -35,11 +40,7 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func signPlusMinusPressed() {
         if typeInTheMiddleOfNumber {
-            if displayValue > 0{
-                displayValue = -displayValue
-            } else {
-                displayValue = abs(displayValue)
-            }
+            displayValue = brain.convertNegOrPosValue(value: displayValue)
         } else {
             if let result = brain.performOperation(symbol:"+/-"){
                 displayValue = result
@@ -68,17 +69,17 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func enter() {
         if typeInTheMiddleOfNumber || !hasOperation {
-            addToHistory(value: "\(displayValue)")
+            addToHistory(value: "\(displayValue!)")
         }
         
         if !hasOperation {
             addToHistory(value: "⏎")
         }
-    
+        
         typeInTheMiddleOfNumber = false
         hasOperation = false
-       
-        if let result = brain.pushOperand(operand:displayValue){
+        
+        if let result = brain.pushOperand(operand:displayValue!){
             displayValue = result
         } else {
             displayValue = 0
@@ -111,7 +112,7 @@ class CalculatorViewController: UIViewController {
         
         displayHistory.text! += "\(value) "
     }
-        
+    
     @IBAction func resetState() {
         display.text! = "0"
         brain.removeStack()
