@@ -39,13 +39,7 @@ class CalculatorBrain{
         learnOps(op:Op.UnaryOperation("sin", sin))
         learnOps(op:Op.UnaryOperation("cos", cos))
         learnOps(op:Op.UnaryOperation("𝜋"){_ in .pi})
-        learnOps(op:Op.UnaryOperation("+/-", plusMin))
     }
-    
-    func plusMin(operand:Double)->Double{
-        return (operand > 0) ? operand * -1 : abs(operand)
-    }
-    
     
     private var opStack = [Op]()
     private var knowsOps = [String:Op]()

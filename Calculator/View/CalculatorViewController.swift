@@ -34,22 +34,14 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func signPlusMinusPressed() {
-        if typeInTheMiddleOfNumber {
-            if displayValue > 0{
-                displayValue = -displayValue
-            } else {
-                displayValue = abs(displayValue)
-            }
+        if displayValue > 0{
+            displayValue = -displayValue
         } else {
-            if let result = brain.performOperation(symbol:"+/-"){
-                displayValue = result
-            }
+            displayValue = abs(displayValue)
         }
     }
     
     @IBOutlet weak var displayHistory: UILabel!
-    
-    var hasOperation: Bool = false
     
     let brain = CalculatorBrain()
     
@@ -69,12 +61,9 @@ class CalculatorViewController: UIViewController {
         if typeInTheMiddleOfNumber {
             addToHistory(value: "\(displayValue)")
         }
-        if !hasOperation && typeInTheMiddleOfNumber {
-            addToHistory(value: "⏎")
-        }
-        
+        addToHistory(value: "⏎")
+    
         typeInTheMiddleOfNumber = false
-        hasOperation = false
        
         if let result = brain.pushOperand(operand:displayValue){
             displayValue = result
@@ -84,7 +73,6 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func operate(_ sender: UIButton) {
-        hasOperation = true
         if typeInTheMiddleOfNumber {enter()}
         if let operation = sender.currentTitle {
             addToHistory(value: operation)
