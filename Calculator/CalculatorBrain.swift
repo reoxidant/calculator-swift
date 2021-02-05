@@ -39,13 +39,9 @@ class CalculatorBrain{
         learnOps(op:Op.UnaryOperation("sin", sin))
         learnOps(op:Op.UnaryOperation("cos", cos))
         learnOps(op:Op.UnaryOperation("𝜋"){_ in .pi})
-        learnOps(op:Op.UnaryOperation("+/-", plusMin))
+        learnOps(op:Op.UnaryOperation("+/-", { operand in (operand > 0) ? operand * -1 : abs(operand) }))
+        learnOps(op:Op.UnaryOperation("%"){$0 / 100})
     }
-    
-    func plusMin(operand:Double)->Double{
-        return (operand > 0) ? operand * -1 : abs(operand)
-    }
-    
     
     private var opStack = [Op]()
     private var knowsOps = [String:Op]()
@@ -104,5 +100,17 @@ class CalculatorBrain{
     func removeStack(){
         opStack = [Op]()
         _ = evaluate()
+    }
+    
+    func convertNegOrPosValue(value:Double? = nil) -> Double{
+        if value != nil{
+            if value! > 0{
+                 return -value!
+            } else {
+                return abs(value!)
+            }
+        } else {
+            return 0
+        }
     }
 }
