@@ -14,7 +14,7 @@ Project calculator build sdk 13.6
 
 ![app-landscape-orientatio](/Calculator/Screenshots/Calculator-landscape.png?raw=true "app landspace orientation")
 
-## Feature:
+## Features:
 
 - add able to do math operation
 - add able to calculate value with float number
