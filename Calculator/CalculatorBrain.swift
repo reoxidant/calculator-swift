@@ -14,6 +14,7 @@ class CalculatorBrain{
         case Operand(Double)
         case UnaryOperation(String, (Double) -> Double)
         case BinaryOperation(String, (Double, Double) -> Double)
+        case ConstOperation(String, () -> Double)
         
         var description: String
         {
@@ -22,11 +23,11 @@ class CalculatorBrain{
                 case .Operand(let operand): return "\(operand)"
                 case .UnaryOperation(let symbol, _): return symbol
                 case .BinaryOperation(let symbol, _): return symbol
+                case .ConstOperation(let symbol, _):return symbol
                 }
             }
         }
     }
-    
     init(){
         func learnOps(op:Op){
             knowsOps[op.description] = op
@@ -38,9 +39,9 @@ class CalculatorBrain{
         learnOps(op:Op.UnaryOperation("√", sqrt))
         learnOps(op:Op.UnaryOperation("sin", sin))
         learnOps(op:Op.UnaryOperation("cos", cos))
-        learnOps(op:Op.UnaryOperation("𝜋"){_ in .pi})
         learnOps(op:Op.UnaryOperation("+/-", { operand in (operand > 0) ? operand * -1 : abs(operand) }))
         learnOps(op:Op.UnaryOperation("%"){$0 / 100})
+        learnOps(op:Op.ConstOperation("π") { Double.pi })
     }
     
     private var opStack = [Op]()
@@ -71,6 +72,8 @@ class CalculatorBrain{
                         return (operation(operand1, operand2), op2Eval.remainingOps)
                     }
                 }
+            case .ConstOperation(_, let operation):
+                return (operation(), remainingOps)
             }
         }
         
@@ -80,6 +83,17 @@ class CalculatorBrain{
     func pushOperand(operand:Double) -> Double?{
         opStack.append(Op.Operand(operand))
         return evaluate()
+    }
+    
+    var variableValues = [String:Double]()
+    
+    func pushOperand(operand:String) -> Double?{
+        if let variableOperand = variableValues[operand]{
+            opStack.append(Op.Operand(variableOperand))
+            return evaluate()
+        } else {
+            return nil
+        }
     }
     
     func performOperation(symbol:String)->Double?{
@@ -105,7 +119,7 @@ class CalculatorBrain{
     func convertNegOrPosValue(value:Double? = nil) -> Double{
         if value != nil{
             if value! > 0{
-                 return -value!
+                return -value!
             } else {
                 return abs(value!)
             }
