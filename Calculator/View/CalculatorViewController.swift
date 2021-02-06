@@ -95,6 +95,10 @@ class CalculatorViewController: UIViewController {
                 enter()
             }
             addToHistory(value: "=")
+            
+            brain.variableValues[operation] = displayValue
+            print(brain.pushOperand(operand: operation)!)
+            
             if let result = brain.performOperation(symbol:operation){
                 displayValue = result
             } else {
