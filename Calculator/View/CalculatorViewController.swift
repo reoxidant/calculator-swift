@@ -90,14 +90,7 @@ class CalculatorViewController: UIViewController {
         hasOperation = true
         if typeInTheMiddleOfNumber {enter()}
         if let operation = sender.currentTitle {
-            addToHistory(value: operation)
-            if (operation == "𝜋" || operation == "cos"){
-                enter()
-            }
-            addToHistory(value: "=")
-            
-            brain.variableValues[operation] = displayValue
-            print(brain.pushOperand(operand: operation)!)
+            addToHistory(value: operation + " =")
             
             if let result = brain.performOperation(symbol:operation){
                 displayValue = result
@@ -105,6 +98,7 @@ class CalculatorViewController: UIViewController {
                 displayValue = 0
             }
         }
+        print(brain.description)
     }
     
     func addToHistory (value:String)
@@ -121,6 +115,6 @@ class CalculatorViewController: UIViewController {
         display.text! = "0"
         brain.removeStack()
         typeInTheMiddleOfNumber = false
-        displayHistory.text! = ""
+        displayHistory.text! = " "
     }
 }
