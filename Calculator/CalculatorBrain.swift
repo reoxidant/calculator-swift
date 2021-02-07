@@ -15,7 +15,7 @@ class CalculatorBrain{
         case Constant(String, () -> Double)
         case Variable(String)
         case UnaryOperation(String, (Double) -> Double)
-        case BinaryOperation(String, (Double, Double) -> Double)
+        case BinaryOperation(Int, String, (Double, Double) -> Double)
         
         
         var description: String
@@ -26,7 +26,7 @@ class CalculatorBrain{
                 case .Variable(let symbol): return symbol
                 case .Constant(let symbol, _):return symbol
                 case .UnaryOperation(let symbol, _): return symbol
-                case .BinaryOperation(let symbol, _): return symbol
+                case .BinaryOperation(_, let symbol, _): return symbol
                 }
             }
         }
@@ -34,17 +34,8 @@ class CalculatorBrain{
         var p​recedence:Int{
             get {
                 switch self {
-                case .Operand(_): fallthrough
-                case .Variable(_): fallthrough
-                case .Constant(_, _): fallthrough
-                case .UnaryOperation(_, _):
-                    return Int.max
-                case .BinaryOperation(let symbol, _):
-                    switch symbol {
-                    case "+", "-":return 0
-                    case "×", "÷":return 1
-                    default: return Int.max
-                    }
+                case .Operand(_), .Variable(_), .UnaryOperation(_, _), .Constant(_, _): return Int.max
+                case .BinaryOperation(let precedence, _, _):return precedence
                 }
             }
         }
@@ -55,10 +46,10 @@ class CalculatorBrain{
             knowsOps[op.description] = op
         }
         learnOps(op:Op.Constant("𝜋"){ .pi })
-        learnOps(op:Op.BinaryOperation("×", *))
-        learnOps(op:Op.BinaryOperation("÷"){$1 / $0})
-        learnOps(op:Op.BinaryOperation("+", +))
-        learnOps(op:Op.BinaryOperation("-"){$1 - $0})
+        learnOps(op:Op.BinaryOperation(1,"×", *))
+        learnOps(op:Op.BinaryOperation(1,"÷"){$1 / $0})
+        learnOps(op:Op.BinaryOperation(0,"+", +))
+        learnOps(op:Op.BinaryOperation(0,"-"){$1 - $0})
         learnOps(op:Op.UnaryOperation("√", sqrt))
         learnOps(op:Op.UnaryOperation("sin", sin))
         learnOps(op:Op.UnaryOperation("cos", cos))
@@ -90,7 +81,7 @@ class CalculatorBrain{
                 if let operand = operandEvaluation.result {
                     return (operation(operand), operandEvaluation.remainingOps)
                 }
-            case .BinaryOperation(_, let operation):
+            case .BinaryOperation(_, _, let operation):
                 let op1Eval = evaluate(ops:remainingOps)
                 if let operand1 = op1Eval.result{
                     let op2Eval = evaluate(ops:op1Eval.remainingOps)
@@ -154,49 +145,41 @@ class CalculatorBrain{
         }
     }
     
-    private func describe(ops:[Op]) -> (description: String?, remainingOps:[Op])
+    private func describe(ops:[Op]) -> (description: String?, remainingOps:[Op], precedence: Int)
     {
         if !ops.isEmpty{
             var remainingOps = ops
             let op = remainingOps.removeLast()
+            let currentOpP​recedence = op.p​recedence
+            
             switch op {
             case .Operand(let stringOperand):
-                return ("\(stringOperand)", remainingOps)
+                return ("\(stringOperand)", remainingOps, op.p​recedence)
             case .Variable(let symbol):
-                return (symbol, remainingOps)
+                return (symbol, remainingOps, op.p​recedence)
             case .UnaryOperation(let stringOperation, _):
                 let descriptionEvaluation = describe(ops: remainingOps)
                 if let description = descriptionEvaluation.description{
-                    return ("\(stringOperation) (\(description))", descriptionEvaluation.remainingOps)
+                    return ("\(stringOperation) (\(description))", descriptionEvaluation.remainingOps, op.p​recedence)
                 }
-            case .BinaryOperation(let stringOperation, _):
+            case .BinaryOperation(_, let stringOperation, _):
                 let op1Eval = describe(ops: remainingOps)
-                
-                if var stringOperand1 = op1Eval.description {
+                if var stringOperand1 = op1Eval.description{
                     let op2Eval = describe(ops: op1Eval.remainingOps)
+                    stringOperand1 = currentOpP​recedence > op1Eval.precedence ?
+                        "(\(stringOperand1))" : stringOperand1
                     if var stringOperand2 = op2Eval.description{
-
-                        if let lastOp1 = op1Eval.remainingOps.last{
-                            if op.p​recedence > lastOp1.p​recedence{
-                                stringOperand2 = "(\(stringOperand2))"
-                            }
-                        }
-                        
-                        if let lastOp2 = op2Eval.remainingOps.last{
-                            if op.p​recedence > lastOp2.p​recedence{
-                                stringOperand1 = "(\(stringOperand1))"
-                            }
-                        }
-                        
-                        return ("\(stringOperand2) \(stringOperation) \(stringOperand1)", op2Eval.remainingOps)
+                        stringOperand2 = currentOpP​recedence > op2Eval.precedence ?
+                            "(\(stringOperand2))" : stringOperand2
+                        return ("\(stringOperand2) \(stringOperation) \(stringOperand1)", op2Eval.remainingOps, op.p​recedence)
                     }
                 }
             case .Constant(let stringOperation, _):
-                return (stringOperation, remainingOps)
+                return (stringOperation, remainingOps, op.p​recedence)
             }
         }
         
-        return ("?",ops)
+        return ("?",ops,Int.max)
     }
     
     var description:String{
