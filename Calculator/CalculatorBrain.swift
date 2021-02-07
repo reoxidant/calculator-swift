@@ -104,13 +104,14 @@ class CalculatorBrain{
     
     var variableValues = [String:Double]()
     
-    func pushOperand(operand:String) -> Double?{
-        if let variableOperand = variableValues[operand]{
-            opStack.append(Op.Operand(variableOperand))
-            return evaluate()
-        } else {
-            return nil
-        }
+    func setVariableValue(symbol:String, value:Double)->Double?{
+        variableValues[symbol] = value
+        return evaluate()
+    }
+    
+    func pushOperand(variable:String) -> Double?{
+        opStack.append(Op.Variable(variable))
+        return evaluate()
     }
     
     func performOperation(symbol:String)->Double?{

@@ -38,6 +38,24 @@ class CalculatorViewController: UIViewController {
         }
     }
     
+    @IBAction func saveInMemory() {
+        typeInTheMiddleOfNumber = false
+       
+        if let value = brain.setVariableValue(symbol: "M", value: displayValue!){
+            displayValue = value
+        }
+        
+    }
+    
+    @IBAction func pushFromMemory() {
+        if typeInTheMiddleOfNumber{enter()}
+        if let value = brain.pushOperand(variable: "M"){
+            displayValue = value
+        } else {
+            displayValue = 0
+        }
+    }
+    
     @IBAction func signPlusMinusPressed() {
         if typeInTheMiddleOfNumber {
             displayValue = brain.convertNegOrPosValue(value: displayValue)
