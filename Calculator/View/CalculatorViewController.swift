@@ -50,8 +50,6 @@ class CalculatorViewController: UIViewController {
     
     @IBOutlet weak var displayHistory: UILabel!
     
-    var hasOperation: Bool = false
-    
     let brain = CalculatorBrain()
     
     @IBAction func digitsPressed(_ sender: UIButton) {
@@ -64,22 +62,12 @@ class CalculatorViewController: UIViewController {
             display.text = (digit.contains(".") ? "0" + digit : digit)
         }
         typeInTheMiddleOfNumber = true
-        hasOperation = false
     }
     
     @IBAction func enter() {
-        if typeInTheMiddleOfNumber || !hasOperation {
-            addToHistory(value: "\(displayValue!)")
-        }
-        
-        if !hasOperation {
-            addToHistory(value: "⏎")
-        }
-        
         typeInTheMiddleOfNumber = false
-        hasOperation = false
-        
         if let result = brain.pushOperand(operand:displayValue!){
+            addToHistory(value: brain.description + " ⏎")
             displayValue = result
         } else {
             displayValue = 0
@@ -87,28 +75,20 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func operate(_ sender: UIButton) {
-        hasOperation = true
         if typeInTheMiddleOfNumber {enter()}
         if let operation = sender.currentTitle {
-            addToHistory(value: operation + " =")
-            
             if let result = brain.performOperation(symbol:operation){
                 displayValue = result
             } else {
                 displayValue = 0
             }
+            addToHistory(value: brain.description + " =")
         }
-        print(brain.description)
     }
     
     func addToHistory (value:String)
     {
-        if let i = displayHistory.text!.firstIndex(of: "=") {
-            displayHistory.text!.remove(at: i)
-            displayHistory.text!.removeLast()
-        }
-        
-        displayHistory.text! += "\(value) "
+        displayHistory.text! = "\(value)"
     }
     
     @IBAction func resetState() {
