@@ -40,7 +40,7 @@ class CalculatorBrain{
             }
         }
     }
-    
+        
     init(){
         func learnOps(op:Op){
             knowsOps[op.description] = op
@@ -59,6 +59,15 @@ class CalculatorBrain{
     
     private var opStack = [Op]()
     private var knowsOps = [String:Op]()
+
+    var variableValues = [String:Double]()
+    
+    var description:String{
+        get{
+            let brainOps = describeBrainOps(opStack: opStack, description: [String]())
+            return brainOps.joined(separator: ", ")
+        }
+    }
     
     private func evaluate(ops:[Op]) -> (result:Double?, remainingOps:[Op]){
         
@@ -97,57 +106,12 @@ class CalculatorBrain{
         return (nil, ops)
     }
     
-    func pushOperand(operand:Double) -> Double?{
-        opStack.append(Op.Operand(operand))
-        return evaluate()
-    }
-    
-    var variableValues = [String:Double]()
-    
-    func setVariableValue(symbol:String, value:Double)->Double?{
-        variableValues[symbol] = value
-        return evaluate()
-    }
-    
-    func pushOperand(variable:String) -> Double?{
-        opStack.append(Op.Variable(variable))
-        return evaluate()
-    }
-    
-    func performOperation(symbol:String)->Double?{
-        if let operation = knowsOps[symbol]{
-            opStack.append(operation)
-        }
-        return evaluate()
-    }
-    
     func evaluate() -> Double?{
         let(result, _) = evaluate(ops:opStack)
         //if let result = result {
         //  print("result = \(result), remainingOps = \(remainingOps)")
         //}
         return result
-    }
-    
-    func removeStack(){
-        opStack = [Op]()
-        _ = evaluate()
-    }
-    
-    func removeVariables(){
-        variableValues.removeAll()
-    }
-    
-    func convertNegOrPosValue(value:Double? = nil) -> Double{
-        if value != nil{
-            if value! > 0{
-                return -value!
-            } else {
-                return abs(value!)
-            }
-        } else {
-            return 0
-        }
     }
     
     private func describe(ops:[Op]) -> (description: String?, remainingOps:[Op], precedence: Int)
@@ -187,13 +151,6 @@ class CalculatorBrain{
         return ("?",ops,Int.max)
     }
     
-    var description:String{
-        get{
-            let brainOps = describeBrainOps(opStack: opStack, description: [String]())
-            return brainOps.joined(separator: ", ")
-        }
-    }
-    
     private func describeBrainOps(opStack:[Op], description:[String]) -> [String]{
         let remainingOps = opStack
         var description = description
@@ -209,5 +166,61 @@ class CalculatorBrain{
         }
         
         return description
+    }
+    
+    func pushOperand(operand:Double) -> Double?{
+        opStack.append(Op.Operand(operand))
+        return evaluate()
+    }
+    
+    func pushOperand(variable:String) -> Double?{
+        opStack.append(Op.Variable(variable))
+        return evaluate()
+    }
+    
+    func performOperation(symbol:String)->Double?{
+        if let operation = knowsOps[symbol]{
+            opStack.append(operation)
+        }
+        return evaluate()
+    }
+    
+    func setVariableValue(symbol:String, value:Double)->Double?{
+        variableValues[symbol] = value
+        return evaluate()
+    }
+
+    func removeStack(){
+        opStack = [Op]()
+        _ = evaluate()
+    }
+    
+    func removeVariables(){
+        variableValues.removeAll()
+    }
+    
+    func returnLastOperation() -> Double?{
+        if !opStack.isEmpty {opStack.removeLast()}
+        return evaluate()
+    }
+    
+    func convertNegOrPosValue(value:Double? = nil) -> Double{
+        if value != nil{
+            if value! > 0{
+                return -value!
+            } else {
+                return abs(value!)
+            }
+        } else {
+            return 0
+        }
+    }
+    
+    private func evaluateAndReportErrors(opStack:[Op])->String?{
+        return ""
+    }
+    
+    func evaluateAndReportErrors(){
+       _ = evaluateAndReportErrors(opStack:opStack)
     }
 }

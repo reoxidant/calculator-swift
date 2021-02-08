@@ -12,6 +12,7 @@ class CalculatorViewController: UIViewController {
     
     @IBOutlet weak var resetOperation: UIButton!
     @IBOutlet weak var display: UILabel!
+    @IBOutlet weak var displayHistory: UILabel!
     
     var typeInTheMiddleOfNumber:Bool = false
     
@@ -29,19 +30,29 @@ class CalculatorViewController: UIViewController {
         }
     }
     
-    @IBAction func pressedBackspace(_ sender: UIButton) {
-        if display.text!.count > 1{
-            display.text = String(display.text!.dropLast())
-            typeInTheMiddleOfNumber = true
+    let brain = CalculatorBrain()
+    
+    @IBAction func undoAndBackspaceOperation() {
+        if typeInTheMiddleOfNumber {
+            if display.text!.count > 1{
+                display.text = String(display.text!.dropLast())
+            } else {
+                display.text = "\(0.0)"
+                typeInTheMiddleOfNumber = false
+            }
         } else {
-            display.text = "\(0.0)"
-            typeInTheMiddleOfNumber = false
+            displayValue = brain.returnLastOperation()
+            if brain.description != ""{
+                addToHistory(value: brain.description + " =")
+            } else {
+                addToHistory(value: " ")
+            }
         }
     }
     
     @IBAction func saveInMemory() {
         typeInTheMiddleOfNumber = false
-       
+        
         if let value = brain.setVariableValue(symbol: "M", value: displayValue!){
             displayValue = value
         }
@@ -57,6 +68,18 @@ class CalculatorViewController: UIViewController {
         }
     }
     
+    @IBAction func resetState(_ sender: UIButton) {
+        if sender.currentTitle == "C"{
+            display.text! = "0"
+            brain.removeStack()
+            typeInTheMiddleOfNumber = false
+            displayHistory.text! = " "
+            sender.setTitle("AC", for: .normal)
+        } else {
+            brain.removeVariables()
+        }
+    }
+    
     @IBAction func signPlusMinusPressed() {
         if typeInTheMiddleOfNumber {
             displayValue = brain.convertNegOrPosValue(value: displayValue)
@@ -66,10 +89,18 @@ class CalculatorViewController: UIViewController {
             }
         }
     }
-    
-    @IBOutlet weak var displayHistory: UILabel!
-    
-    let brain = CalculatorBrain()
+
+    @IBAction func operate(_ sender: UIButton) {
+        if typeInTheMiddleOfNumber {enter()}
+        if let operation = sender.currentTitle {
+            if let result = brain.performOperation(symbol:operation){
+                displayValue = result
+            } else {
+                displayValue = 0
+            }
+            addToHistory(value: brain.description + " =")
+        }
+    }
     
     @IBAction func digitsPressed(_ sender: UIButton) {
         resetOperation.setTitle("C", for: .normal)
@@ -93,33 +124,9 @@ class CalculatorViewController: UIViewController {
             displayValue = 0
         }
     }
-    
-    @IBAction func operate(_ sender: UIButton) {
-        if typeInTheMiddleOfNumber {enter()}
-        if let operation = sender.currentTitle {
-            if let result = brain.performOperation(symbol:operation){
-                displayValue = result
-            } else {
-                displayValue = 0
-            }
-            addToHistory(value: brain.description + " =")
-        }
-    }
-    
+
     func addToHistory (value:String)
     {
         displayHistory.text! = "\(value)"
-    }
-    
-    @IBAction func resetState(_ sender: UIButton) {
-        if sender.currentTitle == "C"{
-            display.text! = "0"
-            brain.removeStack()
-            typeInTheMiddleOfNumber = false
-            displayHistory.text! = " "
-            sender.setTitle("AC", for: .normal)
-        } else {
-            brain.removeVariables()
-        }
     }
 }
