@@ -30,6 +30,15 @@ class CalculatorViewController: UIViewController {
         }
     }
     
+    var displayResult:String{
+        get{
+            return ""
+        }
+        set{
+            addToHistory(value: "\(newValue)")
+        }
+    }
+    
     let brain = CalculatorBrain()
     
     @IBAction func undoAndBackspaceOperation() {
@@ -41,7 +50,7 @@ class CalculatorViewController: UIViewController {
                 typeInTheMiddleOfNumber = false
             }
         } else {
-            displayValue = brain.returnLastOperation()
+            displayValue = checkBrainOnErrors(eval:brain.returnLastOperation())
             if brain.description != ""{
                 addToHistory(value: brain.description + " =")
             } else {
@@ -52,8 +61,7 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func saveInMemory() {
         typeInTheMiddleOfNumber = false
-        
-        if let value = brain.setVariableValue(symbol: "M", value: displayValue!){
+        if let value = checkBrainOnErrors(eval:brain.setVariableValue(symbol: "M", value: displayValue!)){
             displayValue = value
         }
         
@@ -61,7 +69,7 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func pushFromMemory() {
         if typeInTheMiddleOfNumber{enter()}
-        if let value = brain.pushOperand(variable: "M"){
+        if let value = checkBrainOnErrors(eval:brain.pushOperand(variable: "M")){
             displayValue = value
         } else {
             displayValue = 0
@@ -70,35 +78,40 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func resetState(_ sender: UIButton) {
         if sender.currentTitle == "C"{
-            display.text! = "0"
-            brain.removeStack()
-            typeInTheMiddleOfNumber = false
-            displayHistory.text! = " "
             sender.setTitle("AC", for: .normal)
         } else {
             brain.removeVariables()
         }
+        typeInTheMiddleOfNumber = false
+        displayValue = 0
+        displayHistory.text! = " "
+        brain.removeStack()
     }
     
     @IBAction func signPlusMinusPressed() {
         if typeInTheMiddleOfNumber {
             displayValue = brain.convertNegOrPosValue(value: displayValue)
         } else {
-            if let result = brain.performOperation(symbol:"+/-"){
+            if let result = checkBrainOnErrors(eval:brain.performOperation(symbol:"+/-")){
                 displayValue = result
             }
         }
     }
-
+    
     @IBAction func operate(_ sender: UIButton) {
         if typeInTheMiddleOfNumber {enter()}
         if let operation = sender.currentTitle {
-            if let result = brain.performOperation(symbol:operation){
-                displayValue = result
+            let(res, errorName) = brain.performOperation(symbol:operation)
+            if let error = errorName{
+                displayResult = error
             } else {
-                displayValue = 0
+                if let result = res{
+                    displayValue = result
+                } else {
+                    displayValue = 0
+                }
+                addToHistory(value: brain.description + " =")
             }
-            addToHistory(value: brain.description + " =")
         }
     }
     
@@ -117,14 +130,24 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func enter() {
         typeInTheMiddleOfNumber = false
-        if let result = brain.pushOperand(operand:displayValue!){
+        if let result = checkBrainOnErrors(eval:brain.pushOperand(operand:displayValue!)){
             addToHistory(value: brain.description + " ⏎")
             displayValue = result
         } else {
             displayValue = 0
         }
     }
-
+    
+    func checkBrainOnErrors(eval:(Double?, String?))->Double?{
+        let(result, errorName) = eval
+        if let error = errorName{
+            displayResult = error
+        } else {
+            return result
+        }
+        return nil
+    }
+    
     func addToHistory (value:String)
     {
         displayHistory.text! = "\(value)"
