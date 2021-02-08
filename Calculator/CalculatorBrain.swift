@@ -60,6 +60,22 @@ class CalculatorBrain{
     private var opStack = [Op]()
     private var knowsOps = [String:Op]()
     
+    var variableValues = [String:Double]()
+    
+    let codeErrors = [
+        404: "The variable x is not set",
+        403: "Cannot evaluate operation x with operand x",
+        402: "Some operands are missing",
+        401: "Cannot evaluate operand x with operand x"
+    ]
+    
+    var description:String{
+        get{
+            let brainOps = describeBrainOps(opStack: opStack, description: [String]())
+            return brainOps.joined(separator: ", ")
+        }
+    }
+    
     private func evaluate(ops:[Op]) -> (result:Double?, remainingOps:[Op]){
         
         if !ops.isEmpty{
@@ -72,8 +88,8 @@ class CalculatorBrain{
                 //MARK: do if u will click on enter or if u click on operation - first take a operate number to do the enter function and later add into opStack. In case operation take it first for the switch statement to recurse calculate value
                 
                 return (operand, remainingOps)
-            case .Variable(let symbol):
-                if let variableValue = variableValues[symbol]{
+            case .Variable(let variable):
+                if let variableValue = variableValues[variable]{
                     return (variableValue, remainingOps)
                 }
             case .UnaryOperation(_, let operation):
@@ -97,53 +113,20 @@ class CalculatorBrain{
         return (nil, ops)
     }
     
-    func pushOperand(operand:Double) -> Double?{
-        opStack.append(Op.Operand(operand))
-        return evaluate()
-    }
-    
-    var variableValues = [String:Double]()
-    
-    func setVariableValue(symbol:String, value:Double)->Double?{
-        variableValues[symbol] = value
-        return evaluate()
-    }
-    
-    func pushOperand(variable:String) -> Double?{
-        opStack.append(Op.Variable(variable))
-        return evaluate()
-    }
-    
-    func performOperation(symbol:String)->Double?{
-        if let operation = knowsOps[symbol]{
-            opStack.append(operation)
-        }
-        return evaluate()
-    }
-    
-    func evaluate() -> Double?{
+    func evaluate() -> (Double?, String?){
         let(result, _) = evaluate(ops:opStack)
+        let(codeError, _) = evaluateAndReportErrors(ops: opStack)
         //if let result = result {
         //  print("result = \(result), remainingOps = \(remainingOps)")
         //}
-        return result
-    }
-    
-    func removeStack(){
-        opStack = [Op]()
-        _ = evaluate()
-    }
-    
-    func convertNegOrPosValue(value:Double? = nil) -> Double{
-        if value != nil{
-            if value! > 0{
-                return -value!
-            } else {
-                return abs(value!)
+        
+        if let code = codeError{
+            if let error = codeErrors[code]{
+                return (result, error)
             }
-        } else {
-            return 0
         }
+        
+        return (result, nil)
     }
     
     private func describe(ops:[Op]) -> (description: String?, remainingOps:[Op], precedence: Int)
@@ -156,8 +139,8 @@ class CalculatorBrain{
             switch op {
             case .Operand(let stringOperand):
                 return ("\(stringOperand)", remainingOps, op.p​recedence)
-            case .Variable(let symbol):
-                return (symbol, remainingOps, op.p​recedence)
+            case .Variable(let variable):
+                return (variable, remainingOps, op.p​recedence)
             case .UnaryOperation(let stringOperation, _):
                 let descriptionEvaluation = describe(ops: remainingOps)
                 if let description = descriptionEvaluation.description{
@@ -183,13 +166,6 @@ class CalculatorBrain{
         return ("?",ops,Int.max)
     }
     
-    var description:String{
-        get{
-            let brainOps = describeBrainOps(opStack: opStack, description: [String]())
-            return reverseBrainOps(ops: brainOps)
-        }
-    }
-    
     private func describeBrainOps(opStack:[Op], description:[String]) -> [String]{
         let remainingOps = opStack
         var description = description
@@ -207,17 +183,105 @@ class CalculatorBrain{
         return description
     }
     
-    private func reverseBrainOps(ops:[String]) -> String{
-        var copyOps = ops
-        var description = ""
+    func pushOperand(operand:Double) -> (Double?, String?){
+        opStack.append(Op.Operand(operand))
+        return evaluate()
+    }
+    
+    func pushOperand(variable:String) -> (Double?, String?){
+        opStack.append(Op.Variable(variable))
+        return evaluate()
+    }
+    
+    func performOperation(symbol:String)->(Double?, String?){
+        if let operation = knowsOps[symbol]{
+            opStack.append(operation)
+        }
+        return evaluate()
+    }
+    
+    func setVariableValue(symbol:String, value:Double)->(Double?, String?){
+        variableValues[symbol] = value
+        return evaluate()
+    }
+    
+    func removeStack(){
+        opStack = [Op]()
+        _ = evaluate()
+    }
+    
+    func removeVariables(){
+        variableValues.removeAll()
+    }
+    
+    func returnLastOperation() -> (Double?, String?){
+        if !opStack.isEmpty {opStack.removeLast()}
+        return evaluate()
+    }
+    
+    func convertNegOrPosValue(value:Double? = nil) -> Double{
+        if value != nil{
+            if value! > 0{
+                return -value!
+            } else {
+                return abs(value!)
+            }
+        } else {
+            return 0
+        }
+    }
+    
+    private func evaluateAndReportErrors(ops:[Op]) -> (errorCode:Int?, remainingOps:[Op]?){
         
-        description += copyOps.removeLast()
-        
-        if !copyOps.isEmpty{
-            description += ", "
-            description += reverseBrainOps(ops:copyOps)
+        if !ops.isEmpty{
+            var remainingOps = ops
+            let op = remainingOps.removeLast();
+            let resultOperation:Double?
+            
+            switch op {
+            case .Operand(_):
+                return (nil, remainingOps)
+                
+            case .Constant(_, _):
+                return (nil, remainingOps)
+                
+            case .Variable(let variable):
+                if variableValues[variable] == nil {
+                    return (404, remainingOps)
+                }
+                return (nil, remainingOps)
+                
+            case .UnaryOperation(_, let operation):
+                let operandEvaluation = evaluate(ops:remainingOps)
+                if let operand = operandEvaluation.result {
+                    resultOperation = operation(operand)
+                    if (!resultOperation!.isFinite){
+                        return (403, operandEvaluation.remainingOps)
+                    }
+                    return (nil, operandEvaluation.remainingOps)
+                } else {
+                    return (402, operandEvaluation.remainingOps)
+                }
+                
+            case .BinaryOperation(_, _, let operation):
+                let op1Eval = evaluate(ops:remainingOps)
+                if let operand1 = op1Eval.result{
+                    let op2Eval = evaluate(ops:op1Eval.remainingOps)
+                    if let operand2 = op2Eval.result{
+                        resultOperation = operation(operand1, operand2)
+                        if (!resultOperation!.isFinite){
+                            return (401, op2Eval.remainingOps)
+                        }
+                        return (nil, op2Eval.remainingOps)
+                    } else {
+                        return (402, op2Eval.remainingOps)
+                    }
+                } else {
+                    return (402, op1Eval.remainingOps)
+                }
+            }
         }
         
-        return description
+        return(nil, ops)
     }
 }
