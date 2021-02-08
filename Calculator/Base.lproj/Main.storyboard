@@ -192,14 +192,14 @@
                                                         <color key="backgroundColor" red="0.2901960784" green="0.31372549020000001" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBold-Regular" family="Quicksand" pointSize="25"/>
                                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <state key="normal" title="AC">
+                                                        <state key="normal" title="C">
                                                             <color key="titleColor" red="0.056870453059999999" green="0.73821026089999997" blue="0.67843109369999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </state>
                                                         <variation key="heightClass=regular-widthClass=regular">
                                                             <fontDescription key="fontDescription" name="QuicksandBold-Regular" family="Quicksand" pointSize="50"/>
                                                         </variation>
                                                         <connections>
-                                                            <action selector="resetState" destination="BYZ-38-t0r" eventType="touchUpInside" id="g4r-Wx-g01"/>
+                                                            <action selector="resetState:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gTO-k7-IIF"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FRH-Hu-gYL">
@@ -584,6 +584,7 @@
                     <connections>
                         <outlet property="display" destination="6Ln-Lu-pLx" id="HGi-1g-ZpX"/>
                         <outlet property="displayHistory" destination="eMe-jY-deD" id="UMp-7E-24S"/>
+                        <outlet property="resetOperation" destination="cSz-0b-FNp" id="OuW-NY-bNZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

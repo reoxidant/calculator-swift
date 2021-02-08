@@ -10,6 +10,7 @@ import UIKit
 
 class CalculatorViewController: UIViewController {
     
+    @IBOutlet weak var resetOperation: UIButton!
     @IBOutlet weak var display: UILabel!
     
     var typeInTheMiddleOfNumber:Bool = false
@@ -71,6 +72,7 @@ class CalculatorViewController: UIViewController {
     let brain = CalculatorBrain()
     
     @IBAction func digitsPressed(_ sender: UIButton) {
+        resetOperation.setTitle("C", for: .normal)
         let digit = sender.currentTitle!
         let hasDot = digit.contains(".") && display.text!.contains(".")
         
@@ -109,10 +111,15 @@ class CalculatorViewController: UIViewController {
         displayHistory.text! = "\(value)"
     }
     
-    @IBAction func resetState() {
-        display.text! = "0"
-        brain.removeStack()
-        typeInTheMiddleOfNumber = false
-        displayHistory.text! = " "
+    @IBAction func resetState(_ sender: UIButton) {
+        if sender.currentTitle == "C"{
+            display.text! = "0"
+            brain.removeStack()
+            typeInTheMiddleOfNumber = false
+            displayHistory.text! = " "
+            sender.setTitle("AC", for: .normal)
+        } else {
+            brain.removeVariables()
+        }
     }
 }

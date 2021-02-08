@@ -134,6 +134,10 @@ class CalculatorBrain{
         _ = evaluate()
     }
     
+    func removeVariables(){
+        variableValues.removeAll()
+    }
+    
     func convertNegOrPosValue(value:Double? = nil) -> Double{
         if value != nil{
             if value! > 0{
@@ -186,7 +190,7 @@ class CalculatorBrain{
     var description:String{
         get{
             let brainOps = describeBrainOps(opStack: opStack, description: [String]())
-            return reverseBrainOps(ops: brainOps)
+            return brainOps.joined(separator: ", ")
         }
     }
     
@@ -202,20 +206,6 @@ class CalculatorBrain{
             }
             
             description = describeBrainOps(opStack: op.remainingOps, description: description)
-        }
-        
-        return description
-    }
-    
-    private func reverseBrainOps(ops:[String]) -> String{
-        var copyOps = ops
-        var description = ""
-        
-        description += copyOps.removeLast()
-        
-        if !copyOps.isEmpty{
-            description += ", "
-            description += reverseBrainOps(ops:copyOps)
         }
         
         return description
