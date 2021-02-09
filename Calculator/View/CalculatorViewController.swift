@@ -16,6 +16,13 @@ class CalculatorViewController: UIViewController {
     
     var typeInTheMiddleOfNumber:Bool = false
     
+    let codeErrors = [
+        404: "The variable x is not set",
+        403: "Cannot evaluate operation x with operand x",
+        402: "Some operands are missing",
+        401: "Cannot evaluate operand x with operand x"
+    ]
+    
     var displayValue: Double?{
         get{
             let formatter = NumberFormatter()
@@ -26,16 +33,22 @@ class CalculatorViewController: UIViewController {
             }
         }
         set{
-            display.text = "\(newValue ?? 0)"
+            displayResult = "\(newValue ?? 0.0)"
         }
     }
     
-    var displayResult:String{
+    var displayResult: String?{
         get{
-            return ""
+            return display.text
         }
         set{
-            addToHistory(value: "\(newValue)")
+            if let errorCode = brain.evaluateAndReportErrors(){
+                if let error = codeErrors[errorCode]{
+                    display.text = error
+                }
+            } else {
+                display.text = newValue
+            }
         }
     }
     
@@ -50,7 +63,7 @@ class CalculatorViewController: UIViewController {
                 typeInTheMiddleOfNumber = false
             }
         } else {
-            displayValue = checkBrainOnErrors(eval:brain.returnLastOperation())
+            displayValue = brain.returnLastOperation()
             if brain.description != ""{
                 addToHistory(value: brain.description + " =")
             } else {
@@ -61,15 +74,14 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func saveInMemory() {
         typeInTheMiddleOfNumber = false
-        if let value = checkBrainOnErrors(eval:brain.setVariableValue(symbol: "M", value: displayValue!)){
+        if let value = brain.setVariableValue(symbol: "M", value: displayValue!){
             displayValue = value
         }
-        
     }
     
     @IBAction func pushFromMemory() {
         if typeInTheMiddleOfNumber{enter()}
-        if let value = checkBrainOnErrors(eval:brain.pushOperand(variable: "M")){
+        if let value = brain.pushOperand(variable: "M"){
             displayValue = value
         } else {
             displayValue = 0
@@ -83,17 +95,19 @@ class CalculatorViewController: UIViewController {
             brain.removeVariables()
         }
         typeInTheMiddleOfNumber = false
+        brain.removeStack()
         displayValue = 0
         displayHistory.text! = " "
-        brain.removeStack()
     }
     
     @IBAction func signPlusMinusPressed() {
-        if typeInTheMiddleOfNumber {
-            displayValue = brain.convertNegOrPosValue(value: displayValue)
-        } else {
-            if let result = checkBrainOnErrors(eval:brain.performOperation(symbol:"+/-")){
-                displayValue = result
+        if displayValue != 0{
+            if typeInTheMiddleOfNumber {
+                displayValue = brain.convertNegOrPosValue(value: displayValue)
+            } else {
+                if let result = brain.performOperation(symbol:"+/-"){
+                    displayValue = result
+                }
             }
         }
     }
@@ -101,17 +115,12 @@ class CalculatorViewController: UIViewController {
     @IBAction func operate(_ sender: UIButton) {
         if typeInTheMiddleOfNumber {enter()}
         if let operation = sender.currentTitle {
-            let(res, errorName) = brain.performOperation(symbol:operation)
-            if let error = errorName{
-                displayResult = error
+            if let result = brain.performOperation(symbol:operation){
+                displayValue = result
             } else {
-                if let result = res{
-                    displayValue = result
-                } else {
-                    displayValue = 0
-                }
-                addToHistory(value: brain.description + " =")
+                displayValue = 0
             }
+            addToHistory(value: brain.description + " =")
         }
     }
     
@@ -130,7 +139,7 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func enter() {
         typeInTheMiddleOfNumber = false
-        if let result = checkBrainOnErrors(eval:brain.pushOperand(operand:displayValue!)){
+        if let result = brain.pushOperand(operand:displayValue!){
             addToHistory(value: brain.description + " ⏎")
             displayValue = result
         } else {
@@ -138,18 +147,12 @@ class CalculatorViewController: UIViewController {
         }
     }
     
-    func checkBrainOnErrors(eval:(Double?, String?))->Double?{
-        let(result, errorName) = eval
-        if let error = errorName{
-            displayResult = error
-        } else {
-            return result
-        }
-        return nil
-    }
-    
-    func addToHistory (value:String)
+    func addToHistory (value:String?)
     {
-        displayHistory.text! = "\(value)"
+        if let text = value{
+            displayHistory.text! = "\(text)"
+        } else {
+            displayHistory.text! = " "
+        }
     }
 }
