@@ -25,12 +25,7 @@ class CalculatorViewController: UIViewController {
     
     var displayValue: Double?{
         get{
-            let formatter = NumberFormatter()
-            if let convertedValue = formatter.number(from: display.text!) as? Double{
-                return convertedValue
-            } else {
-                return 0
-            }
+            return Double(display.text!)
         }
         set{
             displayResult = "\(newValue ?? 0.0)"
@@ -100,14 +95,12 @@ class CalculatorViewController: UIViewController {
         displayHistory.text! = " "
     }
     
-    @IBAction func signPlusMinusPressed() {
+    @IBAction func signPlusMinusPressed(sender:UIButton) {
         if displayValue != 0{
             if typeInTheMiddleOfNumber {
-                displayValue = brain.convertNegOrPosValue(value: displayValue)
+                displayValue = -displayValue!
             } else {
-                if let result = brain.performOperation(symbol:"+/-"){
-                    displayValue = result
-                }
+                operate(sender)
             }
         }
     }
@@ -138,12 +131,14 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func enter() {
-        typeInTheMiddleOfNumber = false
-        if let result = brain.pushOperand(operand:displayValue!){
-            addToHistory(value: brain.description + " ⏎")
-            displayValue = result
-        } else {
-            displayValue = 0
+        if displayValue != 0 && typeInTheMiddleOfNumber{
+            if let result = brain.pushOperand(operand:displayValue!){
+                displayValue = result
+                addToHistory(value: brain.description + " ⏎")
+            } else {
+                displayValue = 0
+            }
+            typeInTheMiddleOfNumber = false
         }
     }
     
