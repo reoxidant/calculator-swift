@@ -205,18 +205,6 @@ class CalculatorBrain{
         return evaluate()
     }
     
-    func convertNegOrPosValue(value:Double? = nil) -> Double{
-        if value != nil{
-            if value! > 0{
-                return -value!
-            } else {
-                return abs(value!)
-            }
-        } else {
-            return 0
-        }
-    }
-    
     func evaluateAndReportErrors()->Int?{
         let(codeError, _, _) = evaluateAndReportErrors(ops: opStack)
         return codeError
