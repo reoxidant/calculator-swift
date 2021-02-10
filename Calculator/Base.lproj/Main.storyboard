@@ -236,7 +236,7 @@
                                                             <fontDescription key="fontDescription" name="QuicksandBold-Regular" family="Quicksand" pointSize="50"/>
                                                         </variation>
                                                         <connections>
-                                                            <action selector="signPlusMinusPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="o2w-Yv-8dU"/>
+                                                            <action selector="signPlusMinusPressedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="30s-sp-pxb"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wT5-aF-Ctv">

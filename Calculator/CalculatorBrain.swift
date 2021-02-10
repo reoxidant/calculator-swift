@@ -53,7 +53,7 @@ class CalculatorBrain{
         learnOps(op:Op.UnaryOperation("√", sqrt))
         learnOps(op:Op.UnaryOperation("sin", sin))
         learnOps(op:Op.UnaryOperation("cos", cos))
-        learnOps(op:Op.UnaryOperation("+/-", { -$0 }))
+        learnOps(op:Op.UnaryOperation("+⁄−", { -$0 }))
         learnOps(op:Op.UnaryOperation("%"){$0 / 100})
     }
     
@@ -77,7 +77,6 @@ class CalculatorBrain{
             
             switch op {
             case .Operand(let operand):
-                
                 //MARK: do if u will click on enter or if u click on operation - first take a operate number to do the enter function and later add into opStack. In case operation take it first for the switch statement to recurse calculate value
                 
                 return (operand, remainingOps)
@@ -108,10 +107,6 @@ class CalculatorBrain{
     
     func evaluate() -> Double?{
         let(result, _) = evaluate(ops:opStack)
-        //if let result = result {
-        //  print("result = \(result), remainingOps = \(remainingOps)")
-        //}
-        
         return result
     }
     
