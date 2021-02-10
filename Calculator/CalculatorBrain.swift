@@ -53,7 +53,7 @@ class CalculatorBrain{
         learnOps(op:Op.UnaryOperation("√", sqrt))
         learnOps(op:Op.UnaryOperation("sin", sin))
         learnOps(op:Op.UnaryOperation("cos", cos))
-        learnOps(op:Op.UnaryOperation("+/-", { operand in (operand > 0) ? operand * -1 : abs(operand) }))
+        learnOps(op:Op.UnaryOperation("+/-", { -$0 }))
         learnOps(op:Op.UnaryOperation("%"){$0 / 100})
     }
     
@@ -61,13 +61,6 @@ class CalculatorBrain{
     private var knowsOps = [String:Op]()
     
     var variableValues = [String:Double]()
-    
-    let codeErrors = [
-        404: "The variable x is not set",
-        403: "Cannot evaluate operation x with operand x",
-        402: "Some operands are missing",
-        401: "Cannot evaluate operand x with operand x"
-    ]
     
     var description:String{
         get{
@@ -113,20 +106,13 @@ class CalculatorBrain{
         return (nil, ops)
     }
     
-    func evaluate() -> (Double?, String?){
+    func evaluate() -> Double?{
         let(result, _) = evaluate(ops:opStack)
-        let(codeError, _) = evaluateAndReportErrors(ops: opStack)
         //if let result = result {
         //  print("result = \(result), remainingOps = \(remainingOps)")
         //}
         
-        if let code = codeError{
-            if let error = codeErrors[code]{
-                return (result, error)
-            }
-        }
-        
-        return (result, nil)
+        return result
     }
     
     private func describe(ops:[Op]) -> (description: String?, remainingOps:[Op], precedence: Int)
@@ -183,24 +169,24 @@ class CalculatorBrain{
         return description
     }
     
-    func pushOperand(operand:Double) -> (Double?, String?){
+    func pushOperand(operand:Double) -> Double?{
         opStack.append(Op.Operand(operand))
         return evaluate()
     }
     
-    func pushOperand(variable:String) -> (Double?, String?){
+    func pushOperand(variable:String) -> Double?{
         opStack.append(Op.Variable(variable))
         return evaluate()
     }
     
-    func performOperation(symbol:String)->(Double?, String?){
+    func performOperation(symbol:String)->Double?{
         if let operation = knowsOps[symbol]{
             opStack.append(operation)
         }
         return evaluate()
     }
     
-    func setVariableValue(symbol:String, value:Double)->(Double?, String?){
+    func setVariableValue(symbol:String, value:Double)->Double?{
         variableValues[symbol] = value
         return evaluate()
     }
@@ -214,7 +200,7 @@ class CalculatorBrain{
         variableValues.removeAll()
     }
     
-    func returnLastOperation() -> (Double?, String?){
+    func returnLastOperation() -> Double?{
         if !opStack.isEmpty {opStack.removeLast()}
         return evaluate()
     }
@@ -231,7 +217,12 @@ class CalculatorBrain{
         }
     }
     
-    private func evaluateAndReportErrors(ops:[Op]) -> (errorCode:Int?, remainingOps:[Op]?){
+    func evaluateAndReportErrors()->Int?{
+        let(codeError, _, _) = evaluateAndReportErrors(ops: opStack)
+        return codeError
+    }
+    
+    private func evaluateAndReportErrors(ops:[Op]) -> (errorCode:Int?, result:Double?, remainingOps:[Op]){
         
         if !ops.isEmpty{
             var remainingOps = ops
@@ -239,49 +230,50 @@ class CalculatorBrain{
             let resultOperation:Double?
             
             switch op {
-            case .Operand(_):
-                return (nil, remainingOps)
                 
-            case .Constant(_, _):
-                return (nil, remainingOps)
+            case .Operand(let operand):
+                return (nil, operand, remainingOps)
+                
+            case .Constant(_, let operation):
+                return (nil, operation(), remainingOps)
                 
             case .Variable(let variable):
                 if variableValues[variable] == nil {
-                    return (404, remainingOps)
+                    return (404, nil, remainingOps)
                 }
-                return (nil, remainingOps)
+                return (nil, variableValues[variable], remainingOps)
                 
             case .UnaryOperation(_, let operation):
-                let operandEvaluation = evaluate(ops:remainingOps)
+                let operandEvaluation = evaluateAndReportErrors(ops:remainingOps)
                 if let operand = operandEvaluation.result {
                     resultOperation = operation(operand)
                     if (!resultOperation!.isFinite){
-                        return (403, operandEvaluation.remainingOps)
+                        return (403, nil, operandEvaluation.remainingOps)
                     }
-                    return (nil, operandEvaluation.remainingOps)
+                    return (nil, operation(operand), operandEvaluation.remainingOps)
                 } else {
-                    return (402, operandEvaluation.remainingOps)
+                    return (402, nil, operandEvaluation.remainingOps)
                 }
                 
             case .BinaryOperation(_, _, let operation):
-                let op1Eval = evaluate(ops:remainingOps)
+                let op1Eval = evaluateAndReportErrors(ops:remainingOps)
                 if let operand1 = op1Eval.result{
-                    let op2Eval = evaluate(ops:op1Eval.remainingOps)
+                    let op2Eval = evaluateAndReportErrors(ops:op1Eval.remainingOps)
                     if let operand2 = op2Eval.result{
                         resultOperation = operation(operand1, operand2)
                         if (!resultOperation!.isFinite){
-                            return (401, op2Eval.remainingOps)
+                            return (401, nil, op2Eval.remainingOps)
                         }
-                        return (nil, op2Eval.remainingOps)
+                        return (nil, operation(operand1, operand2), op2Eval.remainingOps)
                     } else {
-                        return (402, op2Eval.remainingOps)
+                        return (402, nil, op2Eval.remainingOps)
                     }
                 } else {
-                    return (402, op1Eval.remainingOps)
+                    return (402, nil, op1Eval.remainingOps)
                 }
             }
         }
         
-        return(nil, ops)
+        return(nil, nil, ops)
     }
 }
