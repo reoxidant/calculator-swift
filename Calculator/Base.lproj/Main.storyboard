@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina5_5" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_5" orientation="portrait" appearance="dark"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,11 +22,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="CalculatorViewController" customModule="Calculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dkm-sY-OhH">
-                                <rect key="frame" x="16" y="0.0" width="382" height="720"/>
+                                <rect key="frame" x="16" y="44" width="382" height="802"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gNB-mL-c84">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="283.66666666666669"/>
@@ -84,13 +85,13 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="EZm-29-d0Q">
-                                        <rect key="frame" x="0.0" y="293.66666666666674" width="382" height="426.33333333333326"/>
+                                        <rect key="frame" x="0.0" y="293.66666666666674" width="382" height="508.33333333333326"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="HqK-IS-XuM">
-                                                <rect key="frame" x="0.0" y="0.0" width="382" height="52.333333333333336"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="382" height="64"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OV4-Cb-NWs">
-                                                        <rect key="frame" x="0.0" y="0.0" width="86.666666666666671" height="52.333333333333336"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OV4-Cb-NWs">
+                                                        <rect key="frame" x="0.0" y="0.0" width="86.666666666666671" height="64"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBold-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="undo">
@@ -100,8 +101,8 @@
                                                             <fontDescription key="fontDescription" name="QuicksandBold-Regular" family="Quicksand" pointSize="50"/>
                                                         </variation>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="axL-oI-b0C">
-                                                        <rect key="frame" x="98.666666666666686" y="0.0" width="86.333333333333314" height="52.333333333333336"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="axL-oI-b0C">
+                                                        <rect key="frame" x="98.666666666666686" y="0.0" width="86.333333333333314" height="64"/>
                                                         <color key="backgroundColor" name="Action Buttons Background"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBold-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="→M">
@@ -114,8 +115,8 @@
                                                             <action selector="saveInMemory" destination="BYZ-38-t0r" eventType="touchUpInside" id="UZb-jQ-W4k"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="11f-Z1-sYW">
-                                                        <rect key="frame" x="197" y="0.0" width="86.666666666666686" height="52.333333333333336"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="11f-Z1-sYW">
+                                                        <rect key="frame" x="197" y="0.0" width="86.666666666666686" height="64"/>
                                                         <color key="backgroundColor" name="Action Buttons Background"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBold-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="M">
@@ -128,8 +129,8 @@
                                                             <action selector="pushFromMemory" destination="BYZ-38-t0r" eventType="touchUpInside" id="6bA-d3-EXk"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1C7-jF-fZd">
-                                                        <rect key="frame" x="295.66666666666669" y="0.0" width="86.333333333333314" height="52.333333333333336"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1C7-jF-fZd">
+                                                        <rect key="frame" x="295.66666666666669" y="0.0" width="86.333333333333314" height="64"/>
                                                         <color key="backgroundColor" name="Action Buttons Background"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBold-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="←">
@@ -145,10 +146,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="rDm-nl-OwM">
-                                                <rect key="frame" x="0.0" y="62.333333333333314" width="382" height="52.333333333333343"/>
+                                                <rect key="frame" x="0.0" y="74" width="382" height="64"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kKW-7n-dCM">
-                                                        <rect key="frame" x="0.0" y="0.0" width="86.666666666666671" height="52.333333333333336"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kKW-7n-dCM">
+                                                        <rect key="frame" x="0.0" y="0.0" width="86.666666666666671" height="64"/>
                                                         <color key="backgroundColor" name="Action Buttons Background"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBold-Regular" family="Quicksand" pointSize="25"/>
                                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -162,8 +163,8 @@
                                                             <action selector="operate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SaW-bl-CRF"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dVe-EI-SuN">
-                                                        <rect key="frame" x="98.666666666666686" y="0.0" width="86.333333333333314" height="52.333333333333336"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dVe-EI-SuN">
+                                                        <rect key="frame" x="98.666666666666686" y="0.0" width="86.333333333333314" height="64"/>
                                                         <color key="backgroundColor" name="Action Buttons Background"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBold-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="cos">
@@ -176,8 +177,8 @@
                                                             <action selector="operate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EsS-gN-FgT"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cfu-p4-StY">
-                                                        <rect key="frame" x="197" y="0.0" width="86.666666666666686" height="52.333333333333336"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cfu-p4-StY">
+                                                        <rect key="frame" x="197" y="0.0" width="86.666666666666686" height="64"/>
                                                         <color key="backgroundColor" name="Action Buttons Background"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBold-Regular" family="Quicksand" pointSize="30"/>
                                                         <state key="normal" title="𝜋">
@@ -191,8 +192,8 @@
                                                             <action selector="operate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8l4-O9-yuD"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0vV-0f-KtO">
-                                                        <rect key="frame" x="295.66666666666669" y="0.0" width="86.333333333333314" height="52.333333333333336"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0vV-0f-KtO">
+                                                        <rect key="frame" x="295.66666666666669" y="0.0" width="86.333333333333314" height="64"/>
                                                         <color key="backgroundColor" name="Action Buttons Background"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBold-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="√">
@@ -208,10 +209,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="1HC-KO-OzN">
-                                                <rect key="frame" x="0.0" y="124.66666666666661" width="382" height="52.333333333333329"/>
+                                                <rect key="frame" x="0.0" y="148" width="382" height="64"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cSz-0b-FNp">
-                                                        <rect key="frame" x="0.0" y="0.0" width="86.666666666666671" height="52.333333333333336"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cSz-0b-FNp">
+                                                        <rect key="frame" x="0.0" y="0.0" width="86.666666666666671" height="64"/>
                                                         <color key="backgroundColor" name="Action Buttons Background"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBold-Regular" family="Quicksand" pointSize="25"/>
                                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -225,8 +226,8 @@
                                                             <action selector="resetState:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gTO-k7-IIF"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FRH-Hu-gYL">
-                                                        <rect key="frame" x="98.666666666666686" y="0.0" width="86.333333333333314" height="52.333333333333336"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FRH-Hu-gYL">
+                                                        <rect key="frame" x="98.666666666666686" y="0.0" width="86.333333333333314" height="64"/>
                                                         <color key="backgroundColor" name="Action Buttons Background"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBold-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="+⁄−">
@@ -239,8 +240,8 @@
                                                             <action selector="signPlusMinusPressedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="30s-sp-pxb"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wT5-aF-Ctv">
-                                                        <rect key="frame" x="197" y="0.0" width="86.666666666666686" height="52.333333333333336"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wT5-aF-Ctv">
+                                                        <rect key="frame" x="197" y="0.0" width="86.666666666666686" height="64"/>
                                                         <color key="backgroundColor" name="Action Buttons Background"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBold-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="%">
@@ -253,8 +254,8 @@
                                                             <action selector="operate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="699-Ik-T5D"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5qC-20-WAf">
-                                                        <rect key="frame" x="295.66666666666669" y="0.0" width="86.333333333333314" height="52.333333333333336"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5qC-20-WAf">
+                                                        <rect key="frame" x="295.66666666666669" y="0.0" width="86.333333333333314" height="64"/>
                                                         <color key="backgroundColor" name="Action Buttons Background"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBold-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="÷">
@@ -270,10 +271,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="8dl-eN-HXv">
-                                                <rect key="frame" x="0.0" y="187" width="382" height="52.333333333333343"/>
+                                                <rect key="frame" x="0.0" y="221.99999999999994" width="382" height="64.333333333333314"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZx-AF-vAk">
-                                                        <rect key="frame" x="0.0" y="0.0" width="86.666666666666671" height="52.333333333333336"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZx-AF-vAk">
+                                                        <rect key="frame" x="0.0" y="0.0" width="86.666666666666671" height="64.333333333333329"/>
                                                         <color key="backgroundColor" name="Digits Background"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="7">
@@ -286,8 +287,8 @@
                                                             <action selector="digitsPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4T8-G5-dSo"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H4b-tY-JRD">
-                                                        <rect key="frame" x="98.666666666666686" y="0.0" width="86.333333333333314" height="52.333333333333336"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H4b-tY-JRD">
+                                                        <rect key="frame" x="98.666666666666686" y="0.0" width="86.333333333333314" height="64.333333333333329"/>
                                                         <color key="backgroundColor" name="Digits Background"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="8">
@@ -300,8 +301,8 @@
                                                             <action selector="digitsPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OVt-N9-qzy"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4PP-jN-TRf">
-                                                        <rect key="frame" x="197" y="0.0" width="86.666666666666686" height="52.333333333333336"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4PP-jN-TRf">
+                                                        <rect key="frame" x="197" y="0.0" width="86.666666666666686" height="64.333333333333329"/>
                                                         <color key="backgroundColor" name="Digits Background"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="9">
@@ -314,8 +315,8 @@
                                                             <action selector="digitsPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ja8-7l-lSk"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0hL-Av-jZD">
-                                                        <rect key="frame" x="295.66666666666669" y="0.0" width="86.333333333333314" height="52.333333333333336"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0hL-Av-jZD">
+                                                        <rect key="frame" x="295.66666666666669" y="0.0" width="86.333333333333314" height="64.333333333333329"/>
                                                         <color key="backgroundColor" name="Action Buttons Background"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBold-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="×">
@@ -331,10 +332,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="CnF-IA-9oX">
-                                                <rect key="frame" x="0.0" y="249.33333333333334" width="382" height="52.333333333333343"/>
+                                                <rect key="frame" x="0.0" y="296.33333333333331" width="382" height="64"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lSx-Ba-FH8">
-                                                        <rect key="frame" x="0.0" y="0.0" width="86.666666666666671" height="52.333333333333336"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lSx-Ba-FH8">
+                                                        <rect key="frame" x="0.0" y="0.0" width="86.666666666666671" height="64"/>
                                                         <color key="backgroundColor" name="Digits Background"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="25"/>
                                                         <color key="tintColor" red="0.19958734512329102" green="0.22214618325233459" blue="0.29430776834487915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -348,8 +349,8 @@
                                                             <action selector="digitsPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1Jx-Zw-msf"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fUS-jE-LCZ">
-                                                        <rect key="frame" x="98.666666666666686" y="0.0" width="86.333333333333314" height="52.333333333333336"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fUS-jE-LCZ">
+                                                        <rect key="frame" x="98.666666666666686" y="0.0" width="86.333333333333314" height="64"/>
                                                         <color key="backgroundColor" name="Digits Background"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="5">
@@ -362,8 +363,8 @@
                                                             <action selector="digitsPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sZT-S5-OYJ"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OVO-4q-Acp">
-                                                        <rect key="frame" x="197" y="0.0" width="86.666666666666686" height="52.333333333333336"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OVO-4q-Acp">
+                                                        <rect key="frame" x="197" y="0.0" width="86.666666666666686" height="64"/>
                                                         <color key="backgroundColor" name="Digits Background"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="6">
@@ -376,8 +377,8 @@
                                                             <action selector="digitsPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bAI-9a-oiO"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1z-fw-zGd">
-                                                        <rect key="frame" x="295.66666666666669" y="0.0" width="86.333333333333314" height="52.333333333333336"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1z-fw-zGd">
+                                                        <rect key="frame" x="295.66666666666669" y="0.0" width="86.333333333333314" height="64"/>
                                                         <color key="backgroundColor" name="Action Buttons Background"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBold-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="-">
@@ -393,10 +394,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="u1H-jl-izF">
-                                                <rect key="frame" x="0.0" y="311.66666666666669" width="382" height="52.333333333333314"/>
+                                                <rect key="frame" x="0.0" y="370.33333333333331" width="382" height="64"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8H8-oS-vhb">
-                                                        <rect key="frame" x="0.0" y="0.0" width="86.666666666666671" height="52.333333333333336"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8H8-oS-vhb">
+                                                        <rect key="frame" x="0.0" y="0.0" width="86.666666666666671" height="64"/>
                                                         <color key="backgroundColor" name="Digits Background"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="1">
@@ -409,8 +410,8 @@
                                                             <action selector="digitsPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5jo-1N-ipF"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AAL-3t-XLm">
-                                                        <rect key="frame" x="98.666666666666686" y="0.0" width="86.333333333333314" height="52.333333333333336"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AAL-3t-XLm">
+                                                        <rect key="frame" x="98.666666666666686" y="0.0" width="86.333333333333314" height="64"/>
                                                         <color key="backgroundColor" name="Digits Background"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="2">
@@ -423,8 +424,8 @@
                                                             <action selector="digitsPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RGC-XD-Q49"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbl-Py-Ezu">
-                                                        <rect key="frame" x="197" y="0.0" width="86.666666666666686" height="52.333333333333336"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbl-Py-Ezu">
+                                                        <rect key="frame" x="197" y="0.0" width="86.666666666666686" height="64"/>
                                                         <color key="backgroundColor" name="Digits Background"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="3">
@@ -437,8 +438,8 @@
                                                             <action selector="digitsPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pj3-Ea-JnS"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V9d-CD-pak">
-                                                        <rect key="frame" x="295.66666666666669" y="0.0" width="86.333333333333314" height="52.333333333333336"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V9d-CD-pak">
+                                                        <rect key="frame" x="295.66666666666669" y="0.0" width="86.333333333333314" height="64"/>
                                                         <color key="backgroundColor" name="Action Buttons Background"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBold-Regular" family="Quicksand" pointSize="25"/>
                                                         <state key="normal" title="+">
@@ -454,13 +455,13 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="88f-LA-rkp">
-                                                <rect key="frame" x="0.0" y="373.99999999999994" width="382" height="52.333333333333314"/>
+                                                <rect key="frame" x="0.0" y="444.33333333333331" width="382" height="64"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="RS0-4n-tNd">
-                                                        <rect key="frame" x="0.0" y="0.0" width="185" height="52.333333333333336"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="185" height="64"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMn-lb-xm0">
-                                                                <rect key="frame" x="0.0" y="0.0" width="86.666666666666671" height="52.333333333333336"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMn-lb-xm0">
+                                                                <rect key="frame" x="0.0" y="0.0" width="86.666666666666671" height="64"/>
                                                                 <color key="backgroundColor" name="Digits Background"/>
                                                                 <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="25"/>
                                                                 <state key="normal" title="0">
@@ -473,8 +474,8 @@
                                                                     <action selector="digitsPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IhW-xy-sx9"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Cd-cO-wU0">
-                                                                <rect key="frame" x="98.666666666666686" y="0.0" width="86.333333333333314" height="52.333333333333336"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Cd-cO-wU0">
+                                                                <rect key="frame" x="98.666666666666686" y="0.0" width="86.333333333333314" height="64"/>
                                                                 <color key="backgroundColor" name="Digits Background"/>
                                                                 <fontDescription key="fontDescription" name="QuicksandBold-Regular" family="Quicksand" pointSize="25"/>
                                                                 <state key="normal" title=".">
@@ -489,8 +490,8 @@
                                                             </button>
                                                         </subviews>
                                                     </stackView>
-                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zdQ-Wj-taL">
-                                                        <rect key="frame" x="197" y="0.0" width="185" height="52.333333333333336"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zdQ-Wj-taL">
+                                                        <rect key="frame" x="197" y="0.0" width="185" height="64"/>
                                                         <color key="backgroundColor" red="0.058823529411764705" green="0.73725490196078436" blue="0.67843137254901964" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" name="QuicksandBook-Regular" family="Quicksand" pointSize="30"/>
                                                         <state key="normal" title="⏎">
@@ -510,6 +511,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="Background"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dkm-sY-OhH" secondAttribute="trailing" constant="8" id="1BD-Wl-0dw"/>
@@ -548,7 +550,6 @@
                                 <variation key="heightClass=compact-widthClass=compact" constant="8"/>
                             </constraint>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="1BD-Wl-0dw"/>
