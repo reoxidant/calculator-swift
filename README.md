@@ -14,19 +14,34 @@ Calculator IOS Application. Build SKD 13.6
 
 ### PSD design template from behance:
 
-<img src="https://raw.githubusercontent.com/reoxidant/swift-calculator/main/Calculator/Screenshots/Calculator.png" width=600/> 
+<img src="https://github.com/reoxidant/swift-calculator/blob/main/Screenshots/Calculator.png" width=600/> 
 
 ## Screenshots:
 
-### Portrait and Landspace Orientation:
+- ### Launch screen:
 
-<img src="https://raw.githubusercontent.com/reoxidant/swift-calculator/main/Calculator/Screenshots/Calculator-portrait.png" width=400/> <img src="https://raw.githubusercontent.com/reoxidant/swift-calculator/main/Calculator/Screenshots/Calculator-landscape.png" width=800/>
+<img src="https://github.com/reoxidant/swift-calculator/blob/main/Screenshots/launch-screen.png" width=400/> 
+
+- ### Portrait and Landspace Orientation in Light Mode:
+
+<div>
+<img src="https://github.com/reoxidant/swift-calculator/blob/main/Screenshots/portrait-light.png" width=400/> 
+<img src="https://github.com/reoxidant/swift-calculator/blob/main/Screenshots/landscape-light.png" width=800/> 
+</div>
+
+- ### Portrait and Landspace Orientation in Dark Mode:
+
+<div>
+<img src="https://github.com/reoxidant/swift-calculator/blob/main/Screenshots/portrait-light.png" width=400/> 
+<img src="https://github.com/reoxidant/swift-calculator/blob/main/Screenshots/landscape-dark.png" width=800/> 
+</div>
 
 ## Requirement:
 
-- IOS 13.6+
+- IOS SDK 13.6
 - Xcode 11.0
 
 ## Contacts:
 
-Vitaliy Shapovalov kupper133@gmail.com
+Vitaliy Shapovalov vshapovalov.dev@yandex.ru
+
