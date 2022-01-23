@@ -32,7 +32,7 @@ Calculator IOS Application. Build SKD 13.6
 - ### Portrait and Landspace Orientation in Dark Mode:
 
 <div>
-<img src="https://github.com/reoxidant/swift-calculator/blob/main/Screenshots/portrait-light.png" width=400/> 
+<img src="https://github.com/reoxidant/swift-calculator/blob/main/Screenshots/portrait-dark.png" width=400/> 
 <img src="https://github.com/reoxidant/swift-calculator/blob/main/Screenshots/landscape-dark.png" width=800/> 
 </div>
 
